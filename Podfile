@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '10.1'
+  platform :ios, '10.1'
 
 target 'Fitness Challenge' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -12,5 +12,12 @@ target 'Fitness Challenge' do
   pod 'Firebase/Database'
   pod 'NoOptionalInterpolation'
   pod 'SwiftKeychainWrapper'
+  pod 'Bolts'
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKLoginKit'
+  pod 'FBSDKLoginKit'
+  pod 'FacebookCore'
+  pod 'FacebookLogin'
+  pod 'FacebookShare'
 
 end

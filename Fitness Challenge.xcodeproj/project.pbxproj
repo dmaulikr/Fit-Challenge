@@ -234,7 +234,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -470,10 +470,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5617D23BB5A2243B4D717DF4 /* Pods-Fitness Challenge.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Fitness Challenge/Fitness Challenge.entitlements";
 				DEVELOPMENT_TEAM = 2PZ6TY2596;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Fitness Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Renegade.Fitness-Challenge";
@@ -489,10 +493,14 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4C3FB95F61D1D547395AF9FD /* Pods-Fitness Challenge.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "Fitness Challenge/Fitness Challenge.entitlements";
 				DEVELOPMENT_TEAM = 2PZ6TY2596;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = "Fitness Challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Renegade.Fitness-Challenge";

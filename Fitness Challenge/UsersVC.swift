@@ -24,26 +24,10 @@ class UsersVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         usersTV.dataSource = self
         usersTV.allowsMultipleSelection = true
         
-        DataService.instance.usersRef.observeSingleEvent(of: .value) { (snapshot: FIRDataSnapshot) in
-            //Parses through data in Firebase Database
-            if let users = snapshot.value as? Dictionary<String, AnyObject> {
-                for (key, value) in users {
-                    if let dict = value as? Dictionary<String, AnyObject> {
-                        if let profile = dict["profile"] as? Dictionary<String, AnyObject> {
-                            if let firstName = profile["firstName"] as? String {
-                                let uid = key
-                                let user = User(uid: uid, firstName: firstName)
-                                self.users.append(user)
-                            }
-                        }
-                    }
-                }
-            }
-            
-            self.usersTV.reloadData()
+       
             
             
-        }
+        
         // Do any additional setup after loading the view.
     }
     

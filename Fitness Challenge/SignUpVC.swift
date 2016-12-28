@@ -8,6 +8,9 @@
 
 import UIKit
 import Firebase
+import FBSDKCoreKit
+import FBSDKLoginKit
+import SwiftKeychainWrapper
 
 
 
@@ -15,6 +18,31 @@ import Firebase
 class SignUpVC: UIViewController {
 
     
+    @IBAction func facebookBtnTapped(_ sender: AnyObject) {
+        let facebookLogin = FBSDKLoginManager()
+        
+        facebookLogin.logIn(withReadPermissions: ["email"], from: self) { (result, error) in
+            if error != nil {
+                print("WHITTEN: Unable to authenticate with Facebook - \(error)")
+            } else if result?.isCancelled == true {
+                print("WHITTEN: User cancelled Facebook Authentication")
+            } else {
+                print("WHITTEN: Successfully authenticated with Facebook")
+                let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+                self.firebaseAuth(credential)
+            }
+        }
+        
+    }
+    func firebaseAuth(_ credential: FIRAuthCredential) {
+        FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+            if error != nil {
+                print("WHITTEN: Unable to authenticate with Firebase - \(error)")
+            } else  {
+                print("WHITTEN: Successfully authenticated with Firebase")
+            }
+        })
+    }
     
     @IBOutlet var emailField: UITextField!
     @IBOutlet var passwordField: UITextField!
@@ -28,8 +56,9 @@ class SignUpVC: UIViewController {
    
     @IBAction func signInButtonPressed(_ sender: AnyObject){
         
+        
         if let email = emailField.text, let pass = passwordField.text, (email.characters.count > 0 && pass.characters.count > 5){
-            
+           
             AuthService.instance.login(email: email, password: pass, onComplete: { (errMsg, data) in
                guard errMsg == nil else {
                 let alert = UIAlertController(title: "Error Authentication", message: errMsg, preferredStyle: .alert)
@@ -53,7 +82,6 @@ class SignUpVC: UIViewController {
         
     }
     
-
     
     
     

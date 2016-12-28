@@ -7,7 +7,8 @@
 //
 
 import Foundation
-import FirebaseAuth
+import Firebase
+
 
 typealias Completion = (_ errMsg: String?, _ data: AnyObject?) -> Void
 
@@ -18,7 +19,7 @@ class AuthService {
         return _instance
     }
     
-    func login(email: String, password: String, onComplete: Completion?) {
+    func login(email: String, password: String, onComplete: Completion?){
         FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { user, error in
             
             if error != nil {
@@ -30,8 +31,6 @@ class AuthService {
                                 
                             } else {
                                 if user?.uid != nil {
-                                    
-                                    DataService.instance.saveUser(uid: user!.uid)
                                     
                                     //Sign In
                                     FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in

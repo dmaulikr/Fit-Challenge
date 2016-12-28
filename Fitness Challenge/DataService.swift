@@ -10,30 +10,29 @@ import Foundation
 import FirebaseDatabase
 
 let FIR_CHILD_USERS = "users"
+let DB_BASE = FIRDatabase.database().reference()
 
 class DataService {
-    private static let _instance = DataService()
+    private var _REF_BASE = DB_BASE
+    private var _REF_CHALLENGES = DB_BASE.child("Challenges")
+    private var _REF_USERS = DB_BASE.child("users")
     
-    static var instance: DataService {
-        return _instance
+    var REF_BASE: FIRDatabaseReference {
+        return _REF_BASE
     }
     
-    var mainRef: FIRDatabaseReference {
-    return FIRDatabase.database().reference()
-        
-        
+    var REF_CHALLENGES: FIRDatabaseReference {
+        return _REF_CHALLENGES
     }
     
-    var usersRef: FIRDatabaseReference {
-        
-        return mainRef.child(FIR_CHILD_USERS)
-        
+    var REF_USERS: FIRDatabaseReference {
+        return _REF_USERS
     }
     
-    func saveUser(uid: String) {
-        let profile: Dictionary<String, AnyObject> = ["firstName": "" as AnyObject, "lastName": "" as AnyObject]
-        mainRef.child(FIR_CHILD_USERS).child(uid).child("profile").setValue(profile)
-    }
+    static let _instance = DataService()
     
+    func createFirebaseDBUser(uid: String, userData: Dictionary<String, String>) {
+        REF_USERS.child(uid).updateChildValues(userData)
+    }
     
 }
