@@ -53,7 +53,7 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if cell.lblMenu.text! == "Home" {
             print("Home Tapped")
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let desController = mainStoryboard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+            let desController = mainStoryboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
             let newFrontViewController = UINavigationController.init(rootViewController: desController)
             
             revealViewController.pushFrontViewController(newFrontViewController, animated: true)

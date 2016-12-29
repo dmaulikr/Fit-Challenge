@@ -10,6 +10,11 @@ import UIKit
 
 class ChallengesCell: UITableViewCell {
 
+    @IBOutlet weak var title: UILabel!
+    
+    
+    //var challenge: Challenge!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +24,10 @@ class ChallengesCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func configureCell(challenge: Challenge) {
+        title.text = challenge.title  
     }
 
 }

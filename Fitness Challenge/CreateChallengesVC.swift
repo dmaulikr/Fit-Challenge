@@ -10,6 +10,7 @@ import UIKit
 
 class CreateChallengesVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavigationBarDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var homeButton2: UIBarButtonItem!
     @IBOutlet weak var titleTF: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
     override func viewDidLoad() {
@@ -21,6 +22,11 @@ class CreateChallengesVC: UIViewController, UITextFieldDelegate, UITextViewDeleg
         titleTF.delegate = self
       
         descriptionTextView.delegate = self
+        
+        revealViewController().rearViewRevealWidth = 200
+        homeButton2.target = revealViewController()
+        homeButton2.action = #selector(SWRevealViewController.revealToggle(_:))
+
         
         
     }

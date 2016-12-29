@@ -1,23 +1,32 @@
 //
-//  HomeVC.swift
+//  HomeViewController.swift
 //  Fitness Challenge
 //
-//  Created by Travis Whitten on 12/28/16.
+//  Created by Travis Whitten on 12/29/16.
 //  Copyright © 2016 Travis Whitten. All rights reserved.
 //
 
 import UIKit
 import Firebase
 
-class HomeVC: UIViewController,UITableViewDelegate, UITableViewDataSource, UINavigationBarDelegate, UINavigationControllerDelegate {
-
+class HomeViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, UINavigationBarDelegate, UINavigationControllerDelegate {
+    
+    
+    
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    
     var challenges = [Challenge]()
-   
-    @IBOutlet weak var challengesTV: UITableView!
+    
+    
     @IBOutlet weak var homeButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        tableView.delegate = self
+        tableView.dataSource = self
         
         //Getting database references
         DataService.ds.REF_CHALLENGES.observe(.value, with: { (snapshot) in
@@ -35,13 +44,15 @@ class HomeVC: UIViewController,UITableViewDelegate, UITableViewDataSource, UINav
                     }
                 }
             }
-            self.challengesTV.reloadData()
+            self.tableView.reloadData()
         })
-
+        
         // Do any additional setup after loading the view.
         revealViewController().rearViewRevealWidth = 200
         homeButton.target = revealViewController()
         homeButton.action = #selector(SWRevealViewController.revealToggle(_:))
+        
+        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -54,11 +65,13 @@ class HomeVC: UIViewController,UITableViewDelegate, UITableViewDataSource, UINav
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let challenge = challenges[indexPath.row]
-        print("WHITTEN: \(challenge.description)")
         
-        return challengesTV.dequeueReusableCell(withIdentifier: "ChallengesCell") as! ChallengesCell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "ChallengesCell") as? ChallengesCell {
+            cell.configureCell(challenge: challenge)
+            return cell
+        } else {
+            return ChallengesCell()
+        }
+        
     }
-
-   
-
 }

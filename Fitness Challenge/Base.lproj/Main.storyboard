@@ -57,7 +57,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Home Button" translatesAutoresizingMaskIntoConstraints="NO" id="YCz-1Z-kAI">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Home2" translatesAutoresizingMaskIntoConstraints="NO" id="YCz-1Z-kAI">
                                                     <rect key="frame" x="24" y="6" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="Y8b-QS-W0a"/>
@@ -256,10 +256,10 @@
             </objects>
             <point key="canvasLocation" x="2007.2463768115942" y="-522.554347826087"/>
         </scene>
-        <!--HomeVC-->
+        <!--HomeViewController-->
         <scene sceneID="V7C-ts-jKA">
             <objects>
-                <viewController storyboardIdentifier="HomeVC" title="HomeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5KE-D9-ubk" customClass="HomeVC" customModule="Fitness_Challenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" title="HomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5KE-D9-ubk" customClass="HomeViewController" customModule="Fitness_Challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3AA-TX-lHi"/>
                         <viewControllerLayoutGuide type="bottom" id="zmg-8c-8oJ"/>
@@ -309,17 +309,35 @@
                                     <constraint firstAttribute="height" constant="60" id="G55-nm-V4A"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="81" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zCu-gK-L7N">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="tableView" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="110" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zCu-gK-L7N">
                                 <rect key="frame" x="0.0" y="240" width="414" height="496"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="81" id="xJy-gC-34S" customClass="ChallengesCell" customModule="Fitness_Challenge" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="81"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ChallengesCell" rowHeight="110" id="xJy-gC-34S" customClass="ChallengesCell" customModule="Fitness_Challenge" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xJy-gC-34S" id="Bw7-jQ-3E3">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1KN-1h-78V">
+                                                    <rect key="frame" x="8" y="8" width="398" height="94"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="1KN-1h-78V" firstAttribute="top" secondItem="Bw7-jQ-3E3" secondAttribute="topMargin" id="3NP-iT-RQA"/>
+                                                <constraint firstItem="1KN-1h-78V" firstAttribute="leading" secondItem="Bw7-jQ-3E3" secondAttribute="leadingMargin" id="QfA-A6-FQO"/>
+                                                <constraint firstItem="1KN-1h-78V" firstAttribute="bottom" secondItem="Bw7-jQ-3E3" secondAttribute="bottomMargin" id="bHW-or-wu3"/>
+                                                <constraint firstItem="1KN-1h-78V" firstAttribute="trailing" secondItem="Bw7-jQ-3E3" secondAttribute="trailingMargin" id="frF-zT-pAP"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="title" destination="1KN-1h-78V" id="zmx-fu-fdP"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -342,18 +360,18 @@
                         <barButtonItem key="leftBarButtonItem" image="Menu Button" id="SX6-M3-YdK"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="challengesTV" destination="zCu-gK-L7N" id="EQw-P2-CjN"/>
                         <outlet property="homeButton" destination="SX6-M3-YdK" id="5yi-c8-u9y"/>
+                        <outlet property="tableView" destination="zCu-gK-L7N" id="Kbe-hp-P4l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n27-Ws-g13" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2737.68115942029" y="-518.47826086956525"/>
         </scene>
-        <!--Create ChallengesVC-->
+        <!--Create Challenges-->
         <scene sceneID="bTm-oP-6I2">
             <objects>
-                <viewController storyboardIdentifier="CreateChallengesVC" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lw4-sd-vUd" customClass="CreateChallengesVC" customModule="Fitness_Challenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateChallengesVC" title="Create Challenges" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lw4-sd-vUd" customClass="CreateChallengesVC" customModule="Fitness_Challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zYI-lm-kmI"/>
                         <viewControllerLayoutGuide type="bottom" id="AQh-1t-3Du"/>
@@ -421,8 +439,12 @@
                             <constraint firstItem="ocY-jW-6pd" firstAttribute="top" secondItem="oxg-5e-iQa" secondAttribute="top" id="hYc-bF-Yrb"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="PROFILE" id="jsC-sx-LIJ" userLabel="Navigation Item">
+                        <barButtonItem key="leftBarButtonItem" image="Menu Button" id="pkY-cl-TW5"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="descriptionTextView" destination="2r0-gy-qfH" id="KdI-V8-imR"/>
+                        <outlet property="homeButton2" destination="pkY-cl-TW5" id="60d-DN-ifo"/>
                         <outlet property="titleTF" destination="XAk-Hz-ayI" id="3ny-ux-hvp"/>
                     </connections>
                 </viewController>
@@ -433,7 +455,7 @@
         <!--Sign Up-->
         <scene sceneID="51A-jv-uqn">
             <objects>
-                <viewController title="Sign Up" id="gJC-gk-wbp" customClass="SignUpVC" customModule="Fitness_Challenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Sign Up" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gJC-gk-wbp" customClass="SignUpVC" customModule="Fitness_Challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8Ti-TU-mYB"/>
                         <viewControllerLayoutGuide type="bottom" id="7a5-XM-Mc4"/>
@@ -847,7 +869,7 @@
     <resources>
         <image name="Facebook Button" width="260" height="50"/>
         <image name="FitChallenge Logo" width="219" height="163"/>
-        <image name="Home Button" width="50" height="43"/>
+        <image name="Home2" width="50" height="43"/>
         <image name="HomeBackground" width="414" height="736"/>
         <image name="Menu Button" width="30" height="17"/>
         <image name="Navigation Bar" width="414" height="66"/>

@@ -15,7 +15,7 @@ let DB_BASE = FIRDatabase.database().reference()
 
 class DataService {
     private var _REF_BASE = DB_BASE
-    private var _REF_CHALLENGES = DB_BASE.child("challenges")
+    private var _REF_CHALLENGES = DB_BASE.child("challenge")
     private var _REF_USERS = DB_BASE.child("users")
     
     var REF_BASE: FIRDatabaseReference {
@@ -30,11 +30,11 @@ class DataService {
         return _REF_USERS
     }
     
-    var REF_USER_CURRENT: FIRDatabaseReference {
+   /* var REF_USER_CURRENT: FIRDatabaseReference {
         let uid = KeychainWrapper.standard.string(forKey: KEY_UID)
         let user = REF_USERS.child(uid!)
         return user
-    }
+    }*/
     
     static let ds = DataService()
     

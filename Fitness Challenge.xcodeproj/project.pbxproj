@@ -12,6 +12,7 @@
 		567188A31E09FF5D00A41A0B /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567188A21E09FF5D00A41A0B /* UserCell.swift */; };
 		567188A71E0B586600A41A0B /* UsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567188A61E0B586600A41A0B /* UsersVC.swift */; };
 		5684D8291E12DC9700F0A34C /* ButtonRounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5684D8281E12DC9700F0A34C /* ButtonRounding.swift */; };
+		568AC1BA1E15C35000F605E6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568AC1B91E15C35000F605E6 /* HomeViewController.swift */; };
 		5697084B1E0624A500B54EDE /* VideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697084A1E0624A500B54EDE /* VideoVC.swift */; };
 		569DE61B1E14CDCF0012A8CF /* CreateChallengesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569DE61A1E14CDCF0012A8CF /* CreateChallengesVC.swift */; };
 		569DE61D1E14D69F0012A8CF /* ChallengesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569DE61C1E14D69F0012A8CF /* ChallengesCell.swift */; };
@@ -30,7 +31,6 @@
 		56F951B01E0B9ABA00FB9E1C /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F951AF1E0B9ABA00FB9E1C /* PreviewView.swift */; };
 		56FC15DA1E1366DC0037E219 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC15D91E1366DC0037E219 /* MenuVC.swift */; };
 		56FC15DC1E13670F0037E219 /* MenuTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC15DB1E13670F0037E219 /* MenuTVC.swift */; };
-		56FC15E41E138A2C0037E219 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC15E31E138A2C0037E219 /* HomeVC.swift */; };
 		56FC15EA1E1392C00037E219 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FC15E91E1392C00037E219 /* SWRevealViewController.m */; };
 		D775C80CE35623CC534C4925 /* Pods_Fitness_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246476E04D2130BFED28426E /* Pods_Fitness_Challenge.framework */; };
 /* End PBXBuildFile section */
@@ -45,6 +45,7 @@
 		567188A21E09FF5D00A41A0B /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		567188A61E0B586600A41A0B /* UsersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersVC.swift; sourceTree = "<group>"; };
 		5684D8281E12DC9700F0A34C /* ButtonRounding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonRounding.swift; sourceTree = "<group>"; };
+		568AC1B91E15C35000F605E6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		5697084A1E0624A500B54EDE /* VideoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoVC.swift; sourceTree = "<group>"; };
 		569DE61A1E14CDCF0012A8CF /* CreateChallengesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateChallengesVC.swift; sourceTree = "<group>"; };
 		569DE61C1E14D69F0012A8CF /* ChallengesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesCell.swift; sourceTree = "<group>"; };
@@ -65,7 +66,6 @@
 		56F951AF1E0B9ABA00FB9E1C /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		56FC15D91E1366DC0037E219 /* MenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
 		56FC15DB1E13670F0037E219 /* MenuTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTVC.swift; sourceTree = "<group>"; };
-		56FC15E31E138A2C0037E219 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		56FC15E81E1392C00037E219 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		56FC15E91E1392C00037E219 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		56FC15EB1E1392F60037E219 /* Fitness Challenge-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Fitness Challenge-Bridging-Header.h"; path = "Fitness Challenge/Fitness Challenge-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -147,8 +147,8 @@
 				56D5AB911E01BE8F00C51695 /* MainVC.swift */,
 				5697084A1E0624A500B54EDE /* VideoVC.swift */,
 				567188A61E0B586600A41A0B /* UsersVC.swift */,
+				568AC1B91E15C35000F605E6 /* HomeViewController.swift */,
 				56FC15D91E1366DC0037E219 /* MenuVC.swift */,
-				56FC15E31E138A2C0037E219 /* HomeVC.swift */,
 				569DE61A1E14CDCF0012A8CF /* CreateChallengesVC.swift */,
 				56D5AB931E04BC8800C51695 /* View */,
 			);
@@ -338,8 +338,8 @@
 				56F951AE1E0B98FC00FB9E1C /* PhotoCaptureDelegate.swift in Sources */,
 				5697084B1E0624A500B54EDE /* VideoVC.swift in Sources */,
 				56D5AB921E01BE8F00C51695 /* MainVC.swift in Sources */,
+				568AC1BA1E15C35000F605E6 /* HomeViewController.swift in Sources */,
 				56FC15DA1E1366DC0037E219 /* MenuVC.swift in Sources */,
-				56FC15E41E138A2C0037E219 /* HomeVC.swift in Sources */,
 				5684D8291E12DC9700F0A34C /* ButtonRounding.swift in Sources */,
 				569DE61D1E14D69F0012A8CF /* ChallengesCell.swift in Sources */,
 				56EEDE2B1E006FB7005CC896 /* SignUpVC.swift in Sources */,
@@ -478,6 +478,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5617D23BB5A2243B4D717DF4 /* Pods-Fitness Challenge.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Fitness Challenge/Fitness Challenge.entitlements";
@@ -501,6 +502,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4C3FB95F61D1D547395AF9FD /* Pods-Fitness Challenge.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "Fitness Challenge/Fitness Challenge.entitlements";
