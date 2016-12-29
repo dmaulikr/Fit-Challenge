@@ -7,14 +7,22 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeVC: UIViewController, UINavigationBarDelegate, UINavigationControllerDelegate {
 
     
    
+    @IBOutlet weak var challengesTV: UITableView!
     @IBOutlet weak var homeButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        //Getting database references
+        DataService.ds.REF_CHALLENGES.observe(.value, with: { (snapshot) in
+            print(snapshot.value!)
+        })
 
         // Do any additional setup after loading the view.
         revealViewController().rearViewRevealWidth = 200
@@ -22,20 +30,6 @@ class HomeVC: UIViewController, UINavigationBarDelegate, UINavigationControllerD
         homeButton.action = #selector(SWRevealViewController.revealToggle(_:))
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+   
 
 }

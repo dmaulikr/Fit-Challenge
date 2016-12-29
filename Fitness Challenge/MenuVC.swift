@@ -21,8 +21,8 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        menuNameArr = ["Home","Profile","Challenges", "Messages","Signout"]
-        iconImageArr = [UIImage(named: "Home" )!, UIImage(named: "Profile")!, UIImage(named: "Challenges")!, UIImage(named: "Messages")!, UIImage(named: "Signout")!]
+        menuNameArr = ["Home","Profile","Challenges", "Messages","Create Challenges","Signout"]
+        iconImageArr = [UIImage(named: "Home2" )!, UIImage(named: "Profile")!, UIImage(named: "Challenges")!, UIImage(named: "Messages")!,UIImage(named: "Signout")!, UIImage(named: "Signout")!]
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,6 +82,16 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             try! FIRAuth.auth()?.signOut()
             performSegue(withIdentifier: "goToSignUp", sender: nil)
 
+        }
+        
+        if cell.lblMenu.text! == "Create Challenges" {
+            print("WHITTEN: Create Challenge has been tapped")
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let desController = mainStoryboard.instantiateViewController(withIdentifier: "CreateChallengesVC") as! CreateChallengesVC
+            let newFrontViewController = UINavigationController.init(rootViewController: desController)
+            
+            revealViewController.pushFrontViewController(newFrontViewController, animated: true)
+            
         }
         
     }
