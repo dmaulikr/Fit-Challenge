@@ -17,24 +17,15 @@ class VideoVC: UIViewController {
     @IBOutlet weak var webView: UIWebView!
     
     @IBOutlet weak var titleLbl: UILabel!
-    private var _challenges: Challenges!
     
-    var challenges: Challenges {
-        get {
-            return _challenges
-        }set {
-            _challenges = newValue
-            
-        }
-    }
+    
+   
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        titleLbl.text = challenges.videoTitle
-        webView.loadHTMLString(challenges.videoURL, baseURL: nil)
-        
     }
 
     override func didReceiveMemoryWarning() {

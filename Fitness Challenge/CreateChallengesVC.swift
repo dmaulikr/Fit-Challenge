@@ -11,7 +11,6 @@ import UIKit
 class CreateChallengesVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavigationBarDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var titleTF: UITextField!
-    @IBOutlet weak var rulesTextView: UITextView!
     @IBOutlet weak var descriptionTextView: UITextView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +19,7 @@ class CreateChallengesVC: UIViewController, UITextFieldDelegate, UITextViewDeleg
         
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("dismissKeyboard")))
         titleTF.delegate = self
-        rulesTextView.delegate = self
+      
         descriptionTextView.delegate = self
         
         
@@ -37,7 +36,7 @@ class CreateChallengesVC: UIViewController, UITextFieldDelegate, UITextViewDeleg
     
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         descriptionTextView.resignFirstResponder()
-        rulesTextView.resignFirstResponder()
+         
         return true
     }
     
