@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
+import Firebase
 
 class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -19,8 +21,8 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        menuNameArr = ["Home","Profile","Challenges", "Messages"]
-        iconImageArr = [UIImage(named: "Home" )!, UIImage(named: "Profile")!, UIImage(named: "Challenges")!, UIImage(named: "Messages")!]
+        menuNameArr = ["Home","Profile","Challenges", "Messages","Signout"]
+        iconImageArr = [UIImage(named: "Home" )!, UIImage(named: "Profile")!, UIImage(named: "Challenges")!, UIImage(named: "Messages")!, UIImage(named: "Signout")!]
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,6 +73,15 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         if cell.lblMenu.text! == "Challenges" {
             print("Challenges Tapped")
+        }
+        
+        if cell.lblMenu.text! == "Signout" {
+            print("WHITTEN: Signout has been tapped")
+            let keychainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
+            print("WHITTEN: ID Removed from keychain \(keychainResult)")
+            try! FIRAuth.auth()?.signOut()
+            performSegue(withIdentifier: "goToSignUp", sender: nil)
+
         }
         
     }

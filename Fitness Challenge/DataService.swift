@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseDatabase
+import SwiftKeychainWrapper
 
 let FIR_CHILD_USERS = "users"
 let DB_BASE = FIRDatabase.database().reference()
@@ -29,7 +30,13 @@ class DataService {
         return _REF_USERS
     }
     
-    static let _instance = DataService()
+    var REF_USER_CURRENT: FIRDatabaseReference {
+        let uid = KeychainWrapper.standard.string(forKey: KEY_UID)
+        let user = REF_USERS.child(uid!)
+        return user
+    }
+    
+    static let ds = DataService()
     
     func createFirebaseDBUser(uid: String, userData: Dictionary<String, String>) {
         REF_USERS.child(uid).updateChildValues(userData)

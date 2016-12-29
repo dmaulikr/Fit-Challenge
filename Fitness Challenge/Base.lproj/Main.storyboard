@@ -105,6 +105,7 @@
                     </view>
                     <connections>
                         <outlet property="tblTableView" destination="hZf-4V-yNg" id="p7k-Fy-vX3"/>
+                        <segue destination="gJC-gk-wbp" kind="show" identifier="goToSignUp" id="fHd-Bn-a0b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ExO-9h-b3t" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -432,6 +433,7 @@
                     <connections>
                         <outlet property="emailField" destination="6l7-zq-aPv" id="gkY-AX-Qax"/>
                         <outlet property="passwordField" destination="7DZ-D9-8MO" id="2Tj-GO-UlZ"/>
+                        <segue destination="uC5-kG-MwT" kind="show" identifier="goToCreateProfile" id="D0P-Pt-SB5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rzr-RG-m4L" userLabel="First Responder" sceneMemberID="firstResponder"/>

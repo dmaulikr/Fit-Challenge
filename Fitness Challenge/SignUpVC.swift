@@ -34,15 +34,7 @@ class SignUpVC: UIViewController {
         }
         
     }
-    func firebaseAuth(_ credential: FIRAuthCredential) {
-        FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
-            if error != nil {
-                print("WHITTEN: Unable to authenticate with Firebase - \(error)")
-            } else  {
-                print("WHITTEN: Successfully authenticated with Firebase")
-            }
-        })
-    }
+    
     
     @IBOutlet var emailField: UITextField!
     @IBOutlet var passwordField: UITextField!
@@ -50,49 +42,69 @@ class SignUpVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+            print("WHITTEN: ID Found in KeyChain")
+            performSegue(withIdentifier: "goToCreateProfile", sender: nil)
+        }
+    }
+    
+    func firebaseAuth(_ credential: FIRAuthCredential) {
+        FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
+            if error != nil {
+                print("WHITTEN: Unable to authenticate with Firebase - \(error)")
+            } else {
+                print("WHITTEN: Successfully authenticated with Firebase")
+                if let user = user {
+                    let userData = ["prodivider": credential.provider]
+                    self.completeSignIn(id: user.uid, userData: userData)
+                }
+            }
+        })
+    }
+    
+    func completeSignIn(id: String, userData: Dictionary<String, String>) {
+        DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
+        let keychainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
+        print("WHITTEN: Data saved to keychain \(keychainResult)")
+        performSegue(withIdentifier: "goToCreateProfile", sender: nil)
     }
    
     @IBAction func signInButtonPressed(_ sender: AnyObject){
         
-        
         if let email = emailField.text, let pass = passwordField.text, (email.characters.count > 0 && pass.characters.count > 5){
            
-            AuthService.instance.login(email: email, password: pass, onComplete: { (errMsg, data) in
-               guard errMsg == nil else {
-                let alert = UIAlertController(title: "Error Authentication", message: errMsg, preferredStyle: .alert)
-                   alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                   self.present(alert, animated: true, completion: nil)
-                print("Error Authenticating")
-                   return
+            FIRAuth.auth()?.signIn(withEmail: email, password: pass, completion: { (user, error) in
+                if error == nil {
+                    print("WHITTEN: Email user authenticated with Frebase")
+                    if let user = user {
+                        let userData = ["provider": user.providerID]
+                        self.completeSignIn(id: user.uid, userData: userData)
+                    }
+                } else {
+                    FIRAuth.auth()?.createUser(withEmail: email, password: pass, completion: { (user, error) in
+                        if error != nil {
+                            print("WHITTEN: Unable to Authenticate with Firebase using email")
+                        } else {
+                            print("WHITTEN: Successfully authenticated with Firebase")
+                            if let user = user {
+                                let userData = ["provider": user.providerID]
+                                self.completeSignIn(id: user.uid, userData: userData)
+                            }
+                        }
+                    })
                 }
-                print("Sign in Worked")
-                self.performSegue(withIdentifier: "goToCreateProfile", sender: nil)
-                //self.dismiss(animated: true, completion: nil)
-                
-                
             })
-            
-        } else {
-            let alert = UIAlertController(title: "Username and Password Required", message: "You must enter both a username and a password", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            present(alert, animated: true, completion: nil)
-        }
-        
+    }
+    
     }
     
     
     
-    
-    
-    
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     
     
