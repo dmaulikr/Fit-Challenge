@@ -13,12 +13,9 @@ class HomeViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     
     
     
-    
     @IBOutlet weak var tableView: UITableView!
     
-    
     var challenges = [Challenge]()
-    
     
     @IBOutlet weak var homeButton: UIBarButtonItem!
     override func viewDidLoad() {
@@ -36,7 +33,7 @@ class HomeViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             print(snapshot.value!)
             if let snapshot = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 for snap in snapshot {
-                    print("SNAP: \(snap)")
+                    //print("SNAP: \(snap)")
                     if let challengeDict = snap.value as? Dictionary<String, AnyObject> {
                         let key = snap.key
                         let challenge = Challenge(challengeKey: key, challengeData: challengeDict)
@@ -62,16 +59,50 @@ class HomeViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         
         return challenges.count
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("You selected row #\(indexPath.row)!")
+        let challenge = challenges[indexPath.row]
+        let theTitle = challenge.title
+        print(theTitle)
+        self.performSegue(withIdentifier: "goToChallenge", sender: self)
+        
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
         
         let challenge = challenges[indexPath.row]
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "ChallengesCell") as? ChallengesCell {
-            cell.configureCell(challenge: challenge)
+          cell.configureCell(challenge: challenge)
+            
             return cell
         } else {
             return ChallengesCell()
         }
         
+        
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToChallenge" {
+            let destination = segue.destination as! DescriptionVC
+            
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let theTitle = challenges[indexPath.row]
+                destination.challengeTitle = theTitle.title
+                destination.challengeDescription = theTitle.description
+            }
+        
+    
+        
+                
+                //destination.viaSegue =
+                
+            
+        }
+    }
+    
 }

@@ -13,6 +13,8 @@
 		567188A71E0B586600A41A0B /* UsersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567188A61E0B586600A41A0B /* UsersVC.swift */; };
 		5684D8291E12DC9700F0A34C /* ButtonRounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5684D8281E12DC9700F0A34C /* ButtonRounding.swift */; };
 		568AC1BA1E15C35000F605E6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568AC1B91E15C35000F605E6 /* HomeViewController.swift */; };
+		568AC1BC1E1613E800F605E6 /* DescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568AC1BB1E1613E800F605E6 /* DescriptionVC.swift */; };
+		568AC1BE1E18D24300F605E6 /* JoinChallengeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568AC1BD1E18D24300F605E6 /* JoinChallengeVC.swift */; };
 		5697084B1E0624A500B54EDE /* VideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697084A1E0624A500B54EDE /* VideoVC.swift */; };
 		569DE61B1E14CDCF0012A8CF /* CreateChallengesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569DE61A1E14CDCF0012A8CF /* CreateChallengesVC.swift */; };
 		569DE61D1E14D69F0012A8CF /* ChallengesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569DE61C1E14D69F0012A8CF /* ChallengesCell.swift */; };
@@ -46,6 +48,8 @@
 		567188A61E0B586600A41A0B /* UsersVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersVC.swift; sourceTree = "<group>"; };
 		5684D8281E12DC9700F0A34C /* ButtonRounding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonRounding.swift; sourceTree = "<group>"; };
 		568AC1B91E15C35000F605E6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		568AC1BB1E1613E800F605E6 /* DescriptionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionVC.swift; sourceTree = "<group>"; };
+		568AC1BD1E18D24300F605E6 /* JoinChallengeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinChallengeVC.swift; sourceTree = "<group>"; };
 		5697084A1E0624A500B54EDE /* VideoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoVC.swift; sourceTree = "<group>"; };
 		569DE61A1E14CDCF0012A8CF /* CreateChallengesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateChallengesVC.swift; sourceTree = "<group>"; };
 		569DE61C1E14D69F0012A8CF /* ChallengesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesCell.swift; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				56F951AB1E0B98DF00FB9E1C /* CameraViewController.swift */,
+				568AC1BB1E1613E800F605E6 /* DescriptionVC.swift */,
 				56EA6A291E00C05E00E9FE5D /* CreateProfileVC.swift */,
 				56EEDE2A1E006FB7005CC896 /* SignUpVC.swift */,
 				56D5AB911E01BE8F00C51695 /* MainVC.swift */,
@@ -150,6 +155,7 @@
 				568AC1B91E15C35000F605E6 /* HomeViewController.swift */,
 				56FC15D91E1366DC0037E219 /* MenuVC.swift */,
 				569DE61A1E14CDCF0012A8CF /* CreateChallengesVC.swift */,
+				568AC1BD1E18D24300F605E6 /* JoinChallengeVC.swift */,
 				56D5AB931E04BC8800C51695 /* View */,
 			);
 			name = Controller;
@@ -336,12 +342,14 @@
 				56F951AA1E0B7D6500FB9E1C /* User.swift in Sources */,
 				56BA1EB01E14805600D6E5A0 /* Constants.swift in Sources */,
 				56F951AE1E0B98FC00FB9E1C /* PhotoCaptureDelegate.swift in Sources */,
+				568AC1BC1E1613E800F605E6 /* DescriptionVC.swift in Sources */,
 				5697084B1E0624A500B54EDE /* VideoVC.swift in Sources */,
 				56D5AB921E01BE8F00C51695 /* MainVC.swift in Sources */,
 				568AC1BA1E15C35000F605E6 /* HomeViewController.swift in Sources */,
 				56FC15DA1E1366DC0037E219 /* MenuVC.swift in Sources */,
 				5684D8291E12DC9700F0A34C /* ButtonRounding.swift in Sources */,
 				569DE61D1E14D69F0012A8CF /* ChallengesCell.swift in Sources */,
+				568AC1BE1E18D24300F605E6 /* JoinChallengeVC.swift in Sources */,
 				56EEDE2B1E006FB7005CC896 /* SignUpVC.swift in Sources */,
 				569DE61B1E14CDCF0012A8CF /* CreateChallengesVC.swift in Sources */,
 				56FC15DC1E13670F0037E219 /* MenuTVC.swift in Sources */,

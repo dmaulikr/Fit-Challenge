@@ -7,12 +7,25 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
+import Firebase
 
 class CreateChallengesVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, UINavigationBarDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var homeButton2: UIBarButtonItem!
     @IBOutlet weak var titleTF: UITextField!
     @IBOutlet weak var descriptionTextView: UITextView!
+    @IBAction func submitChallenge(_ sender: Any) {
+        if let title = titleTF.text, let description = descriptionTextView.text, (title.characters.count > 0 && description.characters.count > 0) {
+            DataService.ds.REF_CHALLENGES.childByAutoId().setValue(["title": title ,"description": description])
+        
+            
+        } else {
+            print("Must enter a title and a description!")
+        }
+        performSegue(withIdentifier: "goToHome", sender: nil)
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,6 +58,14 @@ class CreateChallengesVC: UIViewController, UITextFieldDelegate, UITextViewDeleg
          
         return true
     }
+    
+    func completeChallenge(id: String, challengeData: Dictionary<String, String>) {
+        DataService.ds.createChallenge(challengeID: id, challengeData: challengeData)
+        performSegue(withIdentifier: "goToHome", sender: nil)
+    }
+
+    
+    
     
 
     
