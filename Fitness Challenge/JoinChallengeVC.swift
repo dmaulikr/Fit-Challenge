@@ -72,7 +72,7 @@ class JoinChallengeVC: UIViewController {
             if snapshot.hasChild(currentUser) {
                 self.ifUserAlreadyJoined()
             } else {
-                print("User doesnt exist")
+                print("User hasn't joined yet")
             }
             //self.ifUserAlreadyJoined()
             //self.challenges = [] //clears out challenges array at the beginning of listener
