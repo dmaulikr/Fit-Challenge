@@ -18,13 +18,16 @@ class HomeViewController: UIViewController,UITableViewDelegate, UITableViewDataS
     var challenges = [Challenge]()
     
     @IBOutlet weak var homeButton: UIBarButtonItem!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
         tableView.delegate = self
         tableView.dataSource = self
-        
+       
         //Getting database references
         DataService.ds.REF_CHALLENGES.observe(.value, with: { (snapshot) in
             
@@ -94,6 +97,7 @@ class HomeViewController: UIViewController,UITableViewDelegate, UITableViewDataS
                 let theTitle = challenges[indexPath.row]
                 destination.challengeTitle = theTitle.title
                 destination.challengeDescription = theTitle.description
+                destination.challengeKey = theTitle.challengeKey
             }
         
     
