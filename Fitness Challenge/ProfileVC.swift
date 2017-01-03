@@ -8,19 +8,37 @@
 
 import UIKit
 import SwiftKeychainWrapper
+import Firebase
 
 class ProfileVC: UIViewController{
     
-    var userName = ""
+    var username = ""
     var name = ""
     var gender = ""
     var age = ""
+    var bio = ""
     var weight = ""
     
+    
+   
+    @IBOutlet weak var usernameLbl: UILabel!
+    @IBOutlet weak var bioLbl: UILabel!
+    @IBOutlet weak var ageLbl: UILabel!
+    @IBOutlet weak var heightLbl: UILabel!
+    @IBOutlet weak var weightLbl: UILabel!
+    @IBOutlet weak var genderLbl: UILabel!
     
     
    
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    
+    
+    
+    @IBAction func editPressed(_ sender: Any) {
+        
+        performSegue(withIdentifier: "editProfile", sender: nil)
+        
+    }
     
     //@IBAction func settingsButton(_ sender: Any) {
         
@@ -53,6 +71,8 @@ class ProfileVC: UIViewController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        parseForProfile()
         
         //Sets the menuButton
         if revealViewController() != nil {
@@ -107,6 +127,23 @@ class ProfileVC: UIViewController{
         
     }
     */
+    
+    func parseForProfile() {
+        DataService.ds.REF_USERS.child(FIRAuth.auth()!.currentUser!.uid).child("profile").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                self.usernameLbl.text = dictionary["userName"] as? String
+                self.genderLbl.text = dictionary["gender"] as? String
+                self.ageLbl.text = dictionary["age"] as? String
+                self.bioLbl.text = dictionary["bio"] as? String
+                self.weightLbl.text = dictionary["weight"] as? String
+                self.heightLbl.text = dictionary["name"] as? String
+                
+            }
+            
+        }, withCancel: nil)
+    }
+
     
     
     

@@ -22,27 +22,50 @@ class CreateProfileVC: UIViewController {
     @IBOutlet weak var weightTF: UITextField!
     
     
+    
+    
     @IBAction func applyBtnPressed(_ sender: Any) {
     
-    let currentUser = FIRAuth!.auth()!.uid
-    DataService.ds.REF_USERS.child(currentUser).child("profile").setValue(["title": title ,"description": description])
         
-        
-
-  
-    
-    }
-
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
         let username = usernameTF.text
         let bio = bioTF.text
         let name = nameTF.text
         let age = ageTF.text
         let gender = genderTF.text
         let weight = weightTF.text
+        
+        if ((username?.characters.count)! > 0 && (gender?.characters.count)! > 0) {
+
+
+    DataService.ds.REF_USERS.child(FIRAuth.auth()!.currentUser!.uid).child("profile").setValue(["userName": username ,"bio": bio, "name": name, "age": age, "gender":gender,"weight": weight])
+        
+        
+        } else {
+            mustEnterUsername()
+        }
+        performSegue(withIdentifier: "goToProfile", sender: nil)
+    
+    }
+    
+    func mustEnterUsername() {
+        let alertController2 = UIAlertController(title: "ERROR", message:"Must enter a username and gender!", preferredStyle: .alert)
+        let OKAction2 = UIAlertAction(title: "OK", style: .default) { (action: UIAlertAction) in
+            print("You've pressed OK button");
+            
+        }
+        alertController2.addAction(OKAction2)
+        self.present(alertController2, animated: true, completion: nil)
+        
+    }
+    
+
+    
+
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+            self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CreateProfileVC.dismissKeyboard)))
         
         
         
@@ -59,19 +82,19 @@ class CreateProfileVC: UIViewController {
             let destination = segue.destination as! ProfileVC
             
             
-            let username = self.username
-            let bio = self.bio
-            let name = self.name
-            let age = self.age
-            let gender = self.gender
-            let weight = self.weight
+            let username = self.usernameTF.text
+            let bio = self.bioTF.text
+            let name = self.nameTF.text
+            let age = self.ageTF.text
+            let gender = self.genderTF.text
+            let weight = self.weightTF.text
             
-            destination.username = username
-            destination.bio = bio
-            destination.name = name
-            destination.age = age
-            destiantion.gender = gender
-            destination.weight = weight
+            destination.username = username!
+            destination.bio = bio!
+            destination.name = name!
+            destination.age = age!
+            destination.gender = gender!
+            destination.weight = weight!
             
             
             
@@ -81,6 +104,22 @@ class CreateProfileVC: UIViewController {
             
         }
     }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        usernameTF.resignFirstResponder()
+        bioTF.resignFirstResponder()
+        nameTF.resignFirstResponder()
+        ageTF.resignFirstResponder()
+        genderTF.resignFirstResponder()
+        weightTF.resignFirstResponder()
+        return true
+    }
+    
+    
 
 
 }

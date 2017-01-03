@@ -31,7 +31,7 @@ class CreateChallengesVC: UIViewController, UITextFieldDelegate, UITextViewDeleg
 
         // Do any additional setup after loading the view.
         
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("dismissKeyboard")))
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CreateChallengesVC.dismissKeyboard)))
         titleTF.delegate = self
       
         descriptionTextView.delegate = self

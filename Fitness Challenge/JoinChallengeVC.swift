@@ -13,6 +13,7 @@ class JoinChallengeVC: UIViewController {
 
     @IBOutlet weak var videoLink: UITextField!
     
+    @IBOutlet weak var userNameLbl: UILabel!
     @IBOutlet weak var repAmount: UITextField!
     
     var challengeID: String!
@@ -20,13 +21,14 @@ class JoinChallengeVC: UIViewController {
     var challengeDescription = ""
     var challengeKey = ""
     var userEnteredList = [String]()
+    var userName = String()
     
     
     @IBAction func submitPressed(_ sender: Any) {
         if let video = videoLink.text, let reps = repAmount.text,(video.characters.count > 0 && reps.characters.count > 0) {
             let currentUser = FIRAuth.auth()!.currentUser!.uid
             DataService.ds.REF_CHALLENGES.child(self.challengeKey).child("joinedChallenger").child(currentUser).setValue(["reps": reps, "videoLink": video])
-            DataService.ds.REF_LEADERBOARDS.child(self.challengeKey).child(currentUser).setValue(["reps": reps])
+            DataService.ds.REF_LEADERBOARDS.child(self.challengeKey).child(currentUser).setValue(["reps": reps,"userName": userNameLbl.text])
             let alertController = UIAlertController(title: "Entry Submitted", message:"You are now entered into the \(challengeTitle)!", preferredStyle: .alert)
             let OKAction = UIAlertAction(title: "OK", style: .default) { (action: UIAlertAction) in
                 print("You've pressed OK button")
@@ -88,7 +90,7 @@ class JoinChallengeVC: UIViewController {
         super.viewDidLoad()
         
         
-         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("dismissKeyboard")))
+         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(JoinChallengeVC.dismissKeyboard)))
         let currentUser = FIRAuth.auth()!.currentUser!.uid
         DataService.ds.REF_CHALLENGES.child(self.challengeKey).child("joinedChallenger").observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
             
@@ -122,15 +124,25 @@ class JoinChallengeVC: UIViewController {
              
              }*/
         })
+        
+        DataService.ds.REF_USERS.child(currentUser).child("profile").observeSingleEvent(of: .value, with: { (snaps) in
+            if let dictionary = snaps.value as? [String: AnyObject] {
+                self.userNameLbl.text = dictionary["userName"] as? String
+            }
+            
+            
+        }, withCancel: nil)
+        
+        
     }
-
+    
 
         // Do any additional setup after loading the view.
     
 
     
     func ifUserAlreadyJoined() {
-        let currentUser = FIRAuth.auth()!.currentUser!.uid
+        //let currentUser = FIRAuth.auth()!.currentUser!.uid
         //if DataService.ds.REF_CHALLENGES.child("joinedChallenger").key == currentUser {
             let alertController1: UIAlertController = UIAlertController(title: "WARNING", message: "You have already entered, entering again will delete your last entry!", preferredStyle: .actionSheet)
             let continueAction: UIAlertAction = UIAlertAction(title: "Continue", style: .default) { action -> Void in

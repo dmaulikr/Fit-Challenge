@@ -28,7 +28,7 @@ class LeaderboardsCell: UITableViewCell {
     
     func configureCell(leader: Leaderboard) {
         
-        userNameLbl.text = leader.userKey
+        userNameLbl.text = leader.userName
         repsLbl.text = leader.reps
        // userNameLbl.text = userName as! String?
     }
