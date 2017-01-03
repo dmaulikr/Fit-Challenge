@@ -67,7 +67,7 @@ class SignUpVC: UIViewController {
         })
     }
     
-    func completeSignIn(id: String, userData: Dictionary<String, Any?>) {
+    func completeSignIn(id: String, userData: Dictionary<String, Any>) {
         DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
         let keychainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
         print("WHITTEN: Data saved to keychain \(keychainResult)")

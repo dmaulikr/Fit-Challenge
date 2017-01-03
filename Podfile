@@ -10,6 +10,7 @@ target 'Fitness Challenge' do
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
   pod 'Firebase/Database'
+  pod 'Firebase/AdMob'
   pod 'NoOptionalInterpolation'
   pod 'SwiftKeychainWrapper'
   pod 'Bolts'

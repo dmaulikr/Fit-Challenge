@@ -15,13 +15,16 @@
 		568AC1BA1E15C35000F605E6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568AC1B91E15C35000F605E6 /* HomeViewController.swift */; };
 		568AC1BC1E1613E800F605E6 /* DescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568AC1BB1E1613E800F605E6 /* DescriptionVC.swift */; };
 		568AC1BE1E18D24300F605E6 /* JoinChallengeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568AC1BD1E18D24300F605E6 /* JoinChallengeVC.swift */; };
-		5697084B1E0624A500B54EDE /* VideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697084A1E0624A500B54EDE /* VideoVC.swift */; };
+		568AC1C51E1B050D00F605E6 /* LeaderboardsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568AC1C41E1B050D00F605E6 /* LeaderboardsCell.swift */; };
+		568AC1C71E1B088000F605E6 /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568AC1C61E1B088000F605E6 /* Leaderboard.swift */; };
+		568AC1C91E1B16C300F605E6 /* LeaderboardsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568AC1C81E1B16C300F605E6 /* LeaderboardsVC.swift */; };
+		568AC1CB1E1B853300F605E6 /* CreateProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568AC1CA1E1B853300F605E6 /* CreateProfileVC.swift */; };
 		569DE61B1E14CDCF0012A8CF /* CreateChallengesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569DE61A1E14CDCF0012A8CF /* CreateChallengesVC.swift */; };
 		569DE61D1E14D69F0012A8CF /* ChallengesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569DE61C1E14D69F0012A8CF /* ChallengesCell.swift */; };
 		569DE61F1E14E8EA0012A8CF /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569DE61E1E14E8EA0012A8CF /* Challenge.swift */; };
 		56BA1EB01E14805600D6E5A0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BA1EAF1E14805600D6E5A0 /* Constants.swift */; };
 		56D5AB921E01BE8F00C51695 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D5AB911E01BE8F00C51695 /* MainVC.swift */; };
-		56EA6A2A1E00C05E00E9FE5D /* CreateProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EA6A291E00C05E00E9FE5D /* CreateProfileVC.swift */; };
+		56EA6A2A1E00C05E00E9FE5D /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EA6A291E00C05E00E9FE5D /* ProfileVC.swift */; };
 		56EEDE191DFFCC89005CC896 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEDE181DFFCC89005CC896 /* AppDelegate.swift */; };
 		56EEDE1E1DFFCC89005CC896 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56EEDE1C1DFFCC89005CC896 /* Main.storyboard */; };
 		56EEDE201DFFCC89005CC896 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56EEDE1F1DFFCC89005CC896 /* Assets.xcassets */; };
@@ -50,13 +53,16 @@
 		568AC1B91E15C35000F605E6 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		568AC1BB1E1613E800F605E6 /* DescriptionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DescriptionVC.swift; sourceTree = "<group>"; };
 		568AC1BD1E18D24300F605E6 /* JoinChallengeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinChallengeVC.swift; sourceTree = "<group>"; };
-		5697084A1E0624A500B54EDE /* VideoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoVC.swift; sourceTree = "<group>"; };
+		568AC1C41E1B050D00F605E6 /* LeaderboardsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardsCell.swift; sourceTree = "<group>"; };
+		568AC1C61E1B088000F605E6 /* Leaderboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
+		568AC1C81E1B16C300F605E6 /* LeaderboardsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardsVC.swift; sourceTree = "<group>"; };
+		568AC1CA1E1B853300F605E6 /* CreateProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileVC.swift; sourceTree = "<group>"; };
 		569DE61A1E14CDCF0012A8CF /* CreateChallengesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateChallengesVC.swift; sourceTree = "<group>"; };
 		569DE61C1E14D69F0012A8CF /* ChallengesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesCell.swift; sourceTree = "<group>"; };
 		569DE61E1E14E8EA0012A8CF /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		56BA1EAF1E14805600D6E5A0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		56D5AB911E01BE8F00C51695 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
-		56EA6A291E00C05E00E9FE5D /* CreateProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileVC.swift; sourceTree = "<group>"; };
+		56EA6A291E00C05E00E9FE5D /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		56EEDE151DFFCC89005CC896 /* Fitness Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Fitness Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		56EEDE181DFFCC89005CC896 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		56EEDE1D1DFFCC89005CC896 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -128,6 +134,7 @@
 				5684D8281E12DC9700F0A34C /* ButtonRounding.swift */,
 				56FC15DB1E13670F0037E219 /* MenuTVC.swift */,
 				569DE61C1E14D69F0012A8CF /* ChallengesCell.swift */,
+				568AC1C41E1B050D00F605E6 /* LeaderboardsCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -138,6 +145,8 @@
 				56F951AD1E0B98FC00FB9E1C /* PhotoCaptureDelegate.swift */,
 				56F951AF1E0B9ABA00FB9E1C /* PreviewView.swift */,
 				569DE61E1E14E8EA0012A8CF /* Challenge.swift */,
+				568AC1C61E1B088000F605E6 /* Leaderboard.swift */,
+				56F951A91E0B7D6500FB9E1C /* User.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -145,12 +154,13 @@
 		56D5AB951E04BC9900C51695 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				568AC1CA1E1B853300F605E6 /* CreateProfileVC.swift */,
+				568AC1C81E1B16C300F605E6 /* LeaderboardsVC.swift */,
 				56F951AB1E0B98DF00FB9E1C /* CameraViewController.swift */,
 				568AC1BB1E1613E800F605E6 /* DescriptionVC.swift */,
-				56EA6A291E00C05E00E9FE5D /* CreateProfileVC.swift */,
+				56EA6A291E00C05E00E9FE5D /* ProfileVC.swift */,
 				56EEDE2A1E006FB7005CC896 /* SignUpVC.swift */,
 				56D5AB911E01BE8F00C51695 /* MainVC.swift */,
-				5697084A1E0624A500B54EDE /* VideoVC.swift */,
 				567188A61E0B586600A41A0B /* UsersVC.swift */,
 				568AC1B91E15C35000F605E6 /* HomeViewController.swift */,
 				56FC15D91E1366DC0037E219 /* MenuVC.swift */,
@@ -195,7 +205,6 @@
 				56EEDE211DFFCC89005CC896 /* LaunchScreen.storyboard */,
 				5671889E1E09E9A500A41A0B /* GoogleService-Info.plist */,
 				56EEDE241DFFCC89005CC896 /* Info.plist */,
-				56F951A91E0B7D6500FB9E1C /* User.swift */,
 			);
 			path = "Fitness Challenge";
 			sourceTree = "<group>";
@@ -343,20 +352,23 @@
 				56BA1EB01E14805600D6E5A0 /* Constants.swift in Sources */,
 				56F951AE1E0B98FC00FB9E1C /* PhotoCaptureDelegate.swift in Sources */,
 				568AC1BC1E1613E800F605E6 /* DescriptionVC.swift in Sources */,
-				5697084B1E0624A500B54EDE /* VideoVC.swift in Sources */,
 				56D5AB921E01BE8F00C51695 /* MainVC.swift in Sources */,
 				568AC1BA1E15C35000F605E6 /* HomeViewController.swift in Sources */,
 				56FC15DA1E1366DC0037E219 /* MenuVC.swift in Sources */,
 				5684D8291E12DC9700F0A34C /* ButtonRounding.swift in Sources */,
+				568AC1CB1E1B853300F605E6 /* CreateProfileVC.swift in Sources */,
 				569DE61D1E14D69F0012A8CF /* ChallengesCell.swift in Sources */,
+				568AC1C71E1B088000F605E6 /* Leaderboard.swift in Sources */,
+				568AC1C51E1B050D00F605E6 /* LeaderboardsCell.swift in Sources */,
 				568AC1BE1E18D24300F605E6 /* JoinChallengeVC.swift in Sources */,
 				56EEDE2B1E006FB7005CC896 /* SignUpVC.swift in Sources */,
 				569DE61B1E14CDCF0012A8CF /* CreateChallengesVC.swift in Sources */,
 				56FC15DC1E13670F0037E219 /* MenuTVC.swift in Sources */,
 				56F951B01E0B9ABA00FB9E1C /* PreviewView.swift in Sources */,
 				56FC15EA1E1392C00037E219 /* SWRevealViewController.m in Sources */,
+				568AC1C91E1B16C300F605E6 /* LeaderboardsVC.swift in Sources */,
 				569DE61F1E14E8EA0012A8CF /* Challenge.swift in Sources */,
-				56EA6A2A1E00C05E00E9FE5D /* CreateProfileVC.swift in Sources */,
+				56EA6A2A1E00C05E00E9FE5D /* ProfileVC.swift in Sources */,
 				56EEDE191DFFCC89005CC896 /* AppDelegate.swift in Sources */,
 				567188A31E09FF5D00A41A0B /* UserCell.swift in Sources */,
 				56F951AC1E0B98DF00FB9E1C /* CameraViewController.swift in Sources */,
@@ -411,7 +423,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -462,7 +473,6 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

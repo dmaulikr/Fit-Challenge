@@ -18,6 +18,11 @@ class DescriptionVC: UIViewController {
         
     }
     
+    @IBAction func leaderboardBtnPressed(_ sender: Any) {
+        
+        performSegue(withIdentifier: "goToLeaderboards", sender: nil)
+        
+    }
     
     var challengeTitle = ""
     var challengeDescription = ""
@@ -44,6 +49,17 @@ class DescriptionVC: UIViewController {
             destination.challengeTitle = challengeTitle
             destination.challengeDescription = challengeDescription
             destination.challengeKey = challengeKey
+        } else if segue.identifier == "goToLeaderboards" {
+            let destination2 = segue.destination as! LeaderboardsVC
+            
+            let challengeTitle = self.challengeTitle
+            let challengeDescription = self.challengeDescription
+            let challengeKey = self.challengeKey
+            
+            destination2.challengeTitle = challengeTitle
+            destination2.challengeDescription = challengeDescription
+            destination2.challengeKey = challengeKey
+            
         }
     }
     

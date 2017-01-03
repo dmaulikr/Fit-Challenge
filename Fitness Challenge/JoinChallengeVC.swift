@@ -24,8 +24,9 @@ class JoinChallengeVC: UIViewController {
     
     @IBAction func submitPressed(_ sender: Any) {
         if let video = videoLink.text, let reps = repAmount.text,(video.characters.count > 0 && reps.characters.count > 0) {
-            
-            DataService.ds.REF_CHALLENGES.child(self.challengeKey).child("joinedChallenger").child(FIRAuth.auth()!.currentUser!.uid).setValue(["reps": reps, "videoLink": video])
+            let currentUser = FIRAuth.auth()!.currentUser!.uid
+            DataService.ds.REF_CHALLENGES.child(self.challengeKey).child("joinedChallenger").child(currentUser).setValue(["reps": reps, "videoLink": video])
+            DataService.ds.REF_LEADERBOARDS.child(self.challengeKey).child(currentUser).setValue(["reps": reps])
             let alertController = UIAlertController(title: "Entry Submitted", message:"You are now entered into the \(challengeTitle)!", preferredStyle: .alert)
             let OKAction = UIAlertAction(title: "OK", style: .default) { (action: UIAlertAction) in
                 print("You've pressed OK button")
@@ -46,6 +47,28 @@ class JoinChallengeVC: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToLeaderboards" {
+            let destination = segue.destination as! LeaderboardsVC
+           
+            let challengeTitle = self.challengeTitle
+            let challengeDescription = self.challengeDescription
+            let challengeKey = self.challengeKey
+            
+            destination.challengeTitle = challengeTitle
+            destination.challengeDescription = challengeDescription
+            destination.challengeKey = challengeKey
+            
+            
+            
+            
+            //destination.viaSegue =
+            
+            
+        }
+    }
+
+    
 
 
         
@@ -64,11 +87,12 @@ class JoinChallengeVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
          self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: Selector("dismissKeyboard")))
         let currentUser = FIRAuth.auth()!.currentUser!.uid
         DataService.ds.REF_CHALLENGES.child(self.challengeKey).child("joinedChallenger").observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
             
-            print(snapshot)
+            //print(snapshot)
             if snapshot.hasChild(currentUser) {
                 self.ifUserAlreadyJoined()
             } else {

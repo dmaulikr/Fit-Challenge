@@ -61,7 +61,7 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         if cell.lblMenu.text! == "Profile" {
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let desController = mainStoryboard.instantiateViewController(withIdentifier: "CreateProfileVC") as! CreateProfileVC
+            let desController = mainStoryboard.instantiateViewController(withIdentifier: "ProfileVC") as! ProfileVC
             let newFrontViewController = UINavigationController.init(rootViewController: desController)
             
             revealViewController.pushFrontViewController(newFrontViewController, animated: true)

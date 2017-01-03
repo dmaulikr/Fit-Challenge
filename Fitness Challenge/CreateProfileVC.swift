@@ -2,108 +2,85 @@
 //  CreateProfileVC.swift
 //  Fitness Challenge
 //
-//  Created by Travis Whitten on 12/13/16.
-//  Copyright © 2016 Travis Whitten. All rights reserved.
+//  Created by Travis Whitten on 1/3/17.
+//  Copyright © 2017 Travis Whitten. All rights reserved.
 //
 
 import UIKit
-import SwiftKeychainWrapper
+import Firebase
 
-class CreateProfileVC: UIViewController{
+class CreateProfileVC: UIViewController {
+    
+    @IBOutlet weak var usernameTF: UITextField!
+    
+    @IBOutlet weak var bioTF: UITextField!
+    @IBOutlet weak var nameTF: UITextField!
+    
+    @IBOutlet weak var ageTF: UITextField!
+    @IBOutlet weak var genderTF: UITextField!
+    
+    @IBOutlet weak var weightTF: UITextField!
     
     
+    @IBAction func applyBtnPressed(_ sender: Any) {
     
+    let currentUser = FIRAuth!.auth()!.uid
+    DataService.ds.REF_USERS.child(currentUser).child("profile").setValue(["title": title ,"description": description])
+        
+        
+
+  
     
-   
-    @IBOutlet weak var menuButton: UIBarButtonItem!
-    
-    //@IBAction func settingsButton(_ sender: Any) {
-        
-        
-        
-        
-    //}
-    
-    //@IBOutlet weak var profilePhoto: UIImageView!
-    
-    //@IBAction func selectProfilePhoto(_ sender: Any) {
-        
-        //let myPickerController = UIImagePickerController()
-       // myPickerController.delegate = self
-        //myPickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        
-        //self.present(myPickerController, animated: true, completion: nil)
-    //}
-   /* @IBAction func goToMain(_ sender: Any) {
-        if let gender = genderTF.text, let username = userNameTF.text, (gender == "male" || gender == "female" && username.characters.count > 0){
-        
-        performSegue(withIdentifier: "goToMain", sender: nil)
-        } else {
-            let alert = UIAlertController(title: "Username and Gender Required", message: "You must enter a valid username and gender(male or female)!", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-            present(alert, animated: true, completion: nil)
-        }
     }
-  */  
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let username = usernameTF.text
+        let bio = bioTF.text
+        let name = nameTF.text
+        let age = ageTF.text
+        let gender = genderTF.text
+        let weight = weightTF.text
         
-        //Sets the menuButton
-        if revealViewController() != nil {
-        menuButton.target = revealViewController()
-        menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
-        //Chaning Nav Bar Features
+        
+        
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "backToProfile" {
+            let destination = segue.destination as! ProfileVC
+            
+            
+            let username = self.username
+            let bio = self.bio
+            let name = self.name
+            let age = self.age
+            let gender = self.gender
+            let weight = self.weight
+            
+            destination.username = username
+            destination.bio = bio
+            destination.name = name
+            destination.age = age
+            destiantion.gender = gender
+            destination.weight = weight
+            
+            
+            
+            
+            //destination.viaSegue =
+            
+            
         }
-        
-       
-        
-        
-        
-
-
-        
-        //Allows the TextFields to be deselected
-        //genderTF.delegate = self
-        //userNameTF.delegate = self
-        //weightTF.delegate = self
-        //heightTF.delegate = self
-        //ageTF.delegate = self
-        //Dismisses Keyboard
-        //self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CreateProfileVC.dismissKeyboard)))
-        
-        //Customizing Nav Bar
-     
-        
-        
-        
     }
-    
-    //func dismissKeyboard() {
-        //view.endEditing(true)
-    //}
-    
-    /*func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        genderTF.resignFirstResponder()
-        userNameTF.resignFirstResponder()
-        weightTF.resignFirstResponder()
-        heightTF.resignFirstResponder()
-        ageTF.resignFirstResponder()
-        
-        return true
-    }*/
 
-    /*func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        
-        profilePhoto.image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        
-        self.dismiss(animated: true, completion: nil)
-        
-    }
-    */
-    
-    
-    
 
 }

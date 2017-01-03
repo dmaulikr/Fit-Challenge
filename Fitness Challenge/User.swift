@@ -9,7 +9,7 @@
 import Foundation
 
 struct User {
-    private var _firstName: String
+    private var _userName: String
     private var _uid: String
     
     var uid: String {
@@ -17,12 +17,12 @@ struct User {
     }
     
     var firstName: String {
-        return _firstName
+        return _userName
     }
     
     init(uid: String, firstName: String) {
         _uid = uid
-        _firstName = firstName
+        _userName = firstName
         
     }
 }
