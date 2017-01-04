@@ -13,9 +13,14 @@ class Leaderboard {
     private var _userKey: String!
     private var _challengeKey: String!
     private var _userName: String!
+    private var _videoLink: String!
     
     var reps: String {
         return _reps
+    }
+    
+    var videoLink: String {
+        return _videoLink
     }
     
     var userName: String {
@@ -34,6 +39,9 @@ class Leaderboard {
         self._reps = reps
     
     }
+    init(videoLink: String) {
+        self._videoLink = videoLink
+    }
     
     init(userKey: String, leaderData: Dictionary<String, AnyObject>) {
         self._userKey = userKey
@@ -45,8 +53,11 @@ class Leaderboard {
         if let userName = leaderData["userName"] as? String {
             self._userName = userName
         }
-        
+        if let videoLink = leaderData["videoLink"] as? String {
+            self._videoLink = videoLink
+        }
         
     }
+    
     
 }

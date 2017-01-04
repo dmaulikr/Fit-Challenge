@@ -12,7 +12,7 @@ import Firebase
 class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
     var leaders = [Leaderboard]()
-    var users = [Leaderboard]()
+    
     
     var challengeTitle = ""
     var challengeDescription = ""
@@ -27,8 +27,7 @@ class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //parseUserNames()
-        //leaders.reverse()
+        
         
         leaderTV.delegate = self
         leaderTV.dataSource = self
@@ -47,7 +46,7 @@ class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                         let key = snap.key
                         //print("This is the key\(key)")
                         let leader = Leaderboard(userKey: key, leaderData: leaderDict)
-
+                        
                         self.leaders.append(leader)
                     }
                 }
@@ -55,7 +54,7 @@ class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.leaders.reverse()
             self.leaderTV.reloadData()
         })
-        
+      
         
     }
     
@@ -77,6 +76,8 @@ class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let leader = leaders[indexPath.row]
+        performSegue(withIdentifier: "VideoVC", sender: leader)
         print("You selected row #\(indexPath.row)!")
     }
     
@@ -93,28 +94,16 @@ class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-    func parseUserNames() {
-        let query = DataService.ds.REF_USERS.queryOrdered(byChild: "userName").queryLimited(toLast: 10)
-        query.observe(.value, with: { (snapshot) in
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? VideoVC {
             
-            self.users = []
-            
-            print("WHITTEN: \(snapshot)")
-            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot]{
-                for snap in snapshots {
-                    print("SNAP: \(snap)")
-                    if let userDict = snap.value as? Dictionary<String, AnyObject> {
-                        let userName = userDict["userName"] as? String
-                    }
-                }
+            if let video = sender as? Leaderboard {
+                destination.videoLink = video
             }
-            self.users.reverse()
-            self.leaderTV.reloadData()
-        })
-
-        
-        
+            
+        }
     }
+    
     
     
 

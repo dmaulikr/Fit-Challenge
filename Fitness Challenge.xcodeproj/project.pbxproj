@@ -23,6 +23,7 @@
 		569DE61D1E14D69F0012A8CF /* ChallengesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569DE61C1E14D69F0012A8CF /* ChallengesCell.swift */; };
 		569DE61F1E14E8EA0012A8CF /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569DE61E1E14E8EA0012A8CF /* Challenge.swift */; };
 		56B925F61E1B956B003E340F /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B925F51E1B956B003E340F /* Profile.swift */; };
+		56B925F81E1C3E32003E340F /* VideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B925F71E1C3E32003E340F /* VideoVC.swift */; };
 		56BA1EB01E14805600D6E5A0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56BA1EAF1E14805600D6E5A0 /* Constants.swift */; };
 		56D5AB921E01BE8F00C51695 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56D5AB911E01BE8F00C51695 /* MainVC.swift */; };
 		56EA6A2A1E00C05E00E9FE5D /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EA6A291E00C05E00E9FE5D /* ProfileVC.swift */; };
@@ -62,6 +63,7 @@
 		569DE61C1E14D69F0012A8CF /* ChallengesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesCell.swift; sourceTree = "<group>"; };
 		569DE61E1E14E8EA0012A8CF /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		56B925F51E1B956B003E340F /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		56B925F71E1C3E32003E340F /* VideoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoVC.swift; sourceTree = "<group>"; };
 		56BA1EAF1E14805600D6E5A0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		56D5AB911E01BE8F00C51695 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		56EA6A291E00C05E00E9FE5D /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				56FC15D91E1366DC0037E219 /* MenuVC.swift */,
 				569DE61A1E14CDCF0012A8CF /* CreateChallengesVC.swift */,
 				568AC1BD1E18D24300F605E6 /* JoinChallengeVC.swift */,
+				56B925F71E1C3E32003E340F /* VideoVC.swift */,
 				56D5AB931E04BC8800C51695 /* View */,
 			);
 			name = Controller;
@@ -355,6 +358,7 @@
 				56BA1EB01E14805600D6E5A0 /* Constants.swift in Sources */,
 				56F951AE1E0B98FC00FB9E1C /* PhotoCaptureDelegate.swift in Sources */,
 				568AC1BC1E1613E800F605E6 /* DescriptionVC.swift in Sources */,
+				56B925F81E1C3E32003E340F /* VideoVC.swift in Sources */,
 				56D5AB921E01BE8F00C51695 /* MainVC.swift in Sources */,
 				568AC1BA1E15C35000F605E6 /* HomeViewController.swift in Sources */,
 				56FC15DA1E1366DC0037E219 /* MenuVC.swift in Sources */,

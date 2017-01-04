@@ -43,7 +43,7 @@ class CreateProfileVC: UIViewController {
         } else {
             mustEnterUsername()
         }
-        performSegue(withIdentifier: "goToProfile", sender: nil)
+        performSegue(withIdentifier: "backToProfile", sender: nil)
     
     }
     
@@ -67,8 +67,25 @@ class CreateProfileVC: UIViewController {
 
             self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(CreateProfileVC.dismissKeyboard)))
         
+        fillProfileTF()
         
-        
+    }
+    
+    func fillProfileTF() {
+        DataService.ds.REF_USERS.child(FIRAuth.auth()!.currentUser!.uid).child("profile").observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                self.usernameTF.text = dictionary["userName"] as? String
+                self.genderTF.text = dictionary["gender"] as? String
+                self.ageTF.text = dictionary["age"] as? String
+                self.bioTF.text = dictionary["bio"] as? String
+                self.weightTF.text = dictionary["weight"] as? String
+                self.nameTF.text = dictionary["name"] as? String
+                
+            }
+
+            
+        }, withCancel: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,34 +94,6 @@ class CreateProfileVC: UIViewController {
     }
     
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "backToProfile" {
-            let destination = segue.destination as! ProfileVC
-            
-            
-            let username = self.usernameTF.text
-            let bio = self.bioTF.text
-            let name = self.nameTF.text
-            let age = self.ageTF.text
-            let gender = self.genderTF.text
-            let weight = self.weightTF.text
-            
-            destination.username = username!
-            destination.bio = bio!
-            destination.name = name!
-            destination.age = age!
-            destination.gender = gender!
-            destination.weight = weight!
-            
-            
-            
-            
-            //destination.viaSegue =
-            
-            
-        }
-    }
-    
     func dismissKeyboard() {
         view.endEditing(true)
     }

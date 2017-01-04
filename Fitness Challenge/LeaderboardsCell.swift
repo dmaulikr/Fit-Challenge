@@ -24,12 +24,14 @@ class LeaderboardsCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+        
     
     
     func configureCell(leader: Leaderboard) {
         
         userNameLbl.text = leader.userName
         repsLbl.text = leader.reps
+        let videoLink = leader.videoLink
        // userNameLbl.text = userName as! String?
     }
 

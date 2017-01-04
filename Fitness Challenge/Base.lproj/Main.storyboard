@@ -284,7 +284,7 @@
                         <outlet property="nameTF" destination="wnV-Eb-SYL" id="ZBR-GN-0tS"/>
                         <outlet property="usernameTF" destination="kwE-Rj-i8J" id="1m4-ds-YFw"/>
                         <outlet property="weightTF" destination="hm1-or-pCb" id="77U-Ij-IE9"/>
-                        <segue destination="uC5-kG-MwT" kind="show" identifier="goToProfile" id="YXO-44-zIn"/>
+                        <segue destination="uC5-kG-MwT" kind="show" identifier="backToProfile" id="fKG-Ou-Y9r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0rr-ew-toH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -479,7 +479,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ksy-SB-7DP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2007.2463768115942" y="-522.554347826087"/>
+            <point key="canvasLocation" x="2125" y="-470"/>
         </scene>
         <!--HomeViewController-->
         <scene sceneID="V7C-ts-jKA">
@@ -823,11 +823,47 @@
                     </view>
                     <connections>
                         <outlet property="leaderTV" destination="0Jt-pP-l00" id="V7A-M5-rfJ"/>
+                        <segue destination="5Yd-eT-bdf" kind="show" identifier="VideoVC" id="Xr0-Np-eAA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y6O-eU-cja" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4169.5652173913049" y="206.25000000000003"/>
+        </scene>
+        <!--VideoVC-->
+        <scene sceneID="aGo-hf-SyT">
+            <objects>
+                <viewController storyboardIdentifier="VideoVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Yd-eT-bdf" customClass="VideoVC" customModule="Fitness_Challenge" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lOm-Yf-xiH"/>
+                        <viewControllerLayoutGuide type="bottom" id="sdX-qI-YzO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kUw-fX-lNz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleAspectFit" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="et2-Jx-mlJ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="301"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="301" id="036-lu-GSA"/>
+                                </constraints>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="et2-Jx-mlJ" secondAttribute="trailing" id="6Tv-ZS-13t"/>
+                            <constraint firstItem="et2-Jx-mlJ" firstAttribute="top" secondItem="kUw-fX-lNz" secondAttribute="top" id="kRp-Zf-voP"/>
+                            <constraint firstItem="et2-Jx-mlJ" firstAttribute="leading" secondItem="kUw-fX-lNz" secondAttribute="leading" id="qnl-xA-hKS"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="et2-Jx-mlJ" id="lPk-26-skn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jnH-KP-g5K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5282.608695652174" y="196.46739130434784"/>
         </scene>
         <!--Join ChallengeVC-->
         <scene sceneID="P2z-Bm-X7q">
@@ -1330,7 +1366,7 @@
         <image name="fitchallengebkg" width="414" height="736"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="49a-8D-Eki"/>
+        <segue reference="fKG-Ou-Y9r"/>
         <segue reference="xx5-As-mU0"/>
         <segue reference="418-M6-s8q"/>
     </inferredMetricsTieBreakers>

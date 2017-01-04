@@ -28,7 +28,7 @@ class JoinChallengeVC: UIViewController {
         if let video = videoLink.text, let reps = repAmount.text,(video.characters.count > 0 && reps.characters.count > 0) {
             let currentUser = FIRAuth.auth()!.currentUser!.uid
             DataService.ds.REF_CHALLENGES.child(self.challengeKey).child("joinedChallenger").child(currentUser).setValue(["reps": reps, "videoLink": video])
-            DataService.ds.REF_LEADERBOARDS.child(self.challengeKey).child(currentUser).setValue(["reps": reps,"userName": userNameLbl.text])
+            DataService.ds.REF_LEADERBOARDS.child(self.challengeKey).child(currentUser).setValue(["reps": reps,"userName": userNameLbl.text, "videoLink": video])
             let alertController = UIAlertController(title: "Entry Submitted", message:"You are now entered into the \(challengeTitle)!", preferredStyle: .alert)
             let OKAction = UIAlertAction(title: "OK", style: .default) { (action: UIAlertAction) in
                 print("You've pressed OK button")
