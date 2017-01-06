@@ -31,7 +31,7 @@ class LeaderboardsCell: UITableViewCell {
         
         userNameLbl.text = leader.userName
         repsLbl.text = leader.reps
-        let videoLink = leader.videoLink
+        //let videoLink = leader.videoLink
        // userNameLbl.text = userName as! String?
     }
 

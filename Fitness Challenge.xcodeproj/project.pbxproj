@@ -19,6 +19,7 @@
 		568AC1C71E1B088000F605E6 /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568AC1C61E1B088000F605E6 /* Leaderboard.swift */; };
 		568AC1C91E1B16C300F605E6 /* LeaderboardsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568AC1C81E1B16C300F605E6 /* LeaderboardsVC.swift */; };
 		568AC1CB1E1B853300F605E6 /* CreateProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568AC1CA1E1B853300F605E6 /* CreateProfileVC.swift */; };
+		568D28A81E204D1500F79CA5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 568D28A71E204D1500F79CA5 /* MobileCoreServices.framework */; };
 		569DE61B1E14CDCF0012A8CF /* CreateChallengesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569DE61A1E14CDCF0012A8CF /* CreateChallengesVC.swift */; };
 		569DE61D1E14D69F0012A8CF /* ChallengesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569DE61C1E14D69F0012A8CF /* ChallengesCell.swift */; };
 		569DE61F1E14E8EA0012A8CF /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569DE61E1E14E8EA0012A8CF /* Challenge.swift */; };
@@ -59,6 +60,7 @@
 		568AC1C61E1B088000F605E6 /* Leaderboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
 		568AC1C81E1B16C300F605E6 /* LeaderboardsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardsVC.swift; sourceTree = "<group>"; };
 		568AC1CA1E1B853300F605E6 /* CreateProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileVC.swift; sourceTree = "<group>"; };
+		568D28A71E204D1500F79CA5 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		569DE61A1E14CDCF0012A8CF /* CreateChallengesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateChallengesVC.swift; sourceTree = "<group>"; };
 		569DE61C1E14D69F0012A8CF /* ChallengesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesCell.swift; sourceTree = "<group>"; };
 		569DE61E1E14E8EA0012A8CF /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				568D28A81E204D1500F79CA5 /* MobileCoreServices.framework in Frameworks */,
 				D775C80CE35623CC534C4925 /* Pods_Fitness_Challenge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,6 +103,7 @@
 		1888B10369E238A3C7CB35ED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				568D28A71E204D1500F79CA5 /* MobileCoreServices.framework */,
 				246476E04D2130BFED28426E /* Pods_Fitness_Challenge.framework */,
 			);
 			name = Frameworks;

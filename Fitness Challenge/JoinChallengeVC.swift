@@ -8,8 +8,10 @@
 
 import UIKit
 import Firebase
+import AVKit
+import MobileCoreServices
 
-class JoinChallengeVC: UIViewController {
+class JoinChallengeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var videoLink: UITextField!
     
@@ -22,6 +24,31 @@ class JoinChallengeVC: UIViewController {
     var challengeKey = ""
     var userEnteredList = [String]()
     var userName = String()
+    
+    @IBAction func recordBtnPressed(_ sender: Any) {
+        
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+            print("Camera Available")
+            
+            let imagePicker = UIImagePickerController()
+            
+            imagePicker.delegate = self
+            imagePicker.sourceType = .camera
+            imagePicker.mediaTypes = [kUTTypeMovie as String]
+            imagePicker.allowsEditing = false
+            
+            imagePicker.showsCameraControls = true
+            self.present(imagePicker, animated: true, completion: nil)
+            
+        } else {
+            print("Camera not found!")
+        }
+        
+        
+        
+        
+    }
+    
     
     
     @IBAction func submitPressed(_ sender: Any) {
