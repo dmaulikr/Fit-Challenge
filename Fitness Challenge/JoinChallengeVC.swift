@@ -9,14 +9,20 @@
 import UIKit
 import Firebase
 import AVKit
+import MediaPlayer
 import MobileCoreServices
 
-class JoinChallengeVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+class JoinChallengeVC: UIViewController, UINavigationControllerDelegate {
 
     @IBOutlet weak var videoLink: UITextField!
     
     @IBOutlet weak var userNameLbl: UILabel!
     @IBOutlet weak var repAmount: UITextField!
+    
+ 
+    
+    
     
     var challengeID: String!
     var challengeTitle = ""
@@ -25,24 +31,10 @@ class JoinChallengeVC: UIViewController, UIImagePickerControllerDelegate, UINavi
     var userEnteredList = [String]()
     var userName = String()
     
-    @IBAction func recordBtnPressed(_ sender: Any) {
+    @IBAction func recordBtnPressed(_ sender: AnyObject) {
         
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
-            print("Camera Available")
-            
-            let imagePicker = UIImagePickerController()
-            
-            imagePicker.delegate = self
-            imagePicker.sourceType = .camera
-            imagePicker.mediaTypes = [kUTTypeMovie as String]
-            imagePicker.allowsEditing = false
-            
-            imagePicker.showsCameraControls = true
-            self.present(imagePicker, animated: true, completion: nil)
-            
-        } else {
-            print("Camera not found!")
-        }
+        startCameraFromViewController(viewController: self, withDelegate: self)
+        
         
         
         
@@ -116,17 +108,18 @@ class JoinChallengeVC: UIViewController, UIImagePickerControllerDelegate, UINavi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       
         
          self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(JoinChallengeVC.dismissKeyboard)))
         let currentUser = FIRAuth.auth()!.currentUser!.uid
         DataService.ds.REF_CHALLENGES.child(self.challengeKey).child("joinedChallenger").observeSingleEvent(of: FIRDataEventType.value, with: { (snapshot) in
             
             //print(snapshot)
-            if snapshot.hasChild(currentUser) {
-                self.ifUserAlreadyJoined()
-            } else {
-                print("User hasn't joined yet")
-            }
+            //if snapshot.hasChild(currentUser) {
+               // self.ifUserAlreadyJoined()
+            //} else {
+              //  print("User hasn't joined yet")
+            //}
             //self.ifUserAlreadyJoined()
             //self.challenges = [] //clears out challenges array at the beginning of listener
             
@@ -164,7 +157,18 @@ class JoinChallengeVC: UIViewController, UIImagePickerControllerDelegate, UINavi
     }
     
 
-        // Do any additional setup after loading the view.
+    func video(videoPath: NSString, didFinishSavingWithError error: NSError?, contextInfo info: AnyObject) {
+        var title = "Success"
+        var message = "Video was saved"
+        if let _ = error {
+            title = "Error"
+            message = "Video failed to save"
+        }
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+
     
 
     
@@ -186,7 +190,51 @@ class JoinChallengeVC: UIViewController, UIImagePickerControllerDelegate, UINavi
 
    // }
     }
+  
+    func startCameraFromViewController(viewController: UIViewController, withDelegate delegate: UIImagePickerControllerDelegate & UINavigationControllerDelegate) -> Bool {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) == false {
+            return false
+        }
+        
+        let cameraController = UIImagePickerController()
+        cameraController.sourceType = .camera
+        cameraController.mediaTypes = [kUTTypeMovie as NSString as String]
+        cameraController.allowsEditing = false
+        cameraController.delegate = delegate
+        
+        present(cameraController, animated: true, completion: nil)
+        return true
+    }
+    
+    
+    
+    
     
     
 
 }
+
+extension JoinChallengeVC: UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        let mediaType = info[UIImagePickerControllerMediaType] as! NSString
+        dismiss(animated: true, completion: nil)
+        // Handle a movie capture
+        if mediaType == kUTTypeMovie {
+            guard let path = (info[UIImagePickerControllerMediaURL] as! NSURL).path else { return }
+            if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(path) {
+                UISaveVideoAtPathToSavedPhotosAlbum(path, self, #selector(JoinChallengeVC.video(videoPath:didFinishSavingWithError:contextInfo:)), nil)
+                
+            }
+        }
+    }
+
+}
+
+
+
+
+
+
+
+
