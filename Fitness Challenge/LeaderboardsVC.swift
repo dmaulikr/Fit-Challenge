@@ -17,6 +17,7 @@ class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     var challengeTitle = ""
     var challengeDescription = ""
     var challengeKey = ""
+    var videoURL: URL?
     var userName = String()
     
     

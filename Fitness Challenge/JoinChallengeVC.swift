@@ -7,18 +7,32 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseStorage
 import Firebase
 import AVKit
 import MediaPlayer
 import MobileCoreServices
 
 
-class JoinChallengeVC: UIViewController, UINavigationControllerDelegate {
+class JoinChallengeVC: UIViewController {
 
-    @IBOutlet weak var videoLink: UITextField!
     
+    
+    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var videoLbl: UILabel!
     @IBOutlet weak var userNameLbl: UILabel!
     @IBOutlet weak var repAmount: UITextField!
+   
+    
+    // Video Storage Variables
+    
+    @IBAction func addVideoBtnPressed(_ sender: Any) {
+        
+        handleSelectVideo()
+    
+        
+    }
     
  
     
@@ -30,8 +44,10 @@ class JoinChallengeVC: UIViewController, UINavigationControllerDelegate {
     var challengeKey = ""
     var userEnteredList = [String]()
     var userName = String()
+    var videoURL: URL?
+  
     
-    @IBAction func recordBtnPressed(_ sender: AnyObject) {
+   @IBAction func recordBtnPressed(_ sender: AnyObject) {
         
         startCameraFromViewController(viewController: self, withDelegate: self)
         
@@ -40,14 +56,14 @@ class JoinChallengeVC: UIViewController, UINavigationControllerDelegate {
         
         
     }
-    
+ 
     
     
     @IBAction func submitPressed(_ sender: Any) {
-        if let video = videoLink.text, let reps = repAmount.text,(video.characters.count > 0 && reps.characters.count > 0) {
+        if let reps = repAmount.text, (reps.characters.count > 0) {
             let currentUser = FIRAuth.auth()!.currentUser!.uid
-            DataService.ds.REF_CHALLENGES.child(self.challengeKey).child("joinedChallenger").child(currentUser).setValue(["reps": reps, "videoLink": video])
-            DataService.ds.REF_LEADERBOARDS.child(self.challengeKey).child(currentUser).setValue(["reps": reps,"userName": userNameLbl.text, "videoLink": video])
+            DataService.ds.REF_CHALLENGES.child(self.challengeKey).child("joinedChallenger").child(currentUser).setValue(["reps": reps, "videoLink": videoLbl.text!])
+            DataService.ds.REF_LEADERBOARDS.child(self.challengeKey).child(currentUser).setValue(["reps": reps,"userName": userNameLbl.text!, "videoLink": videoLbl.text!])
             let alertController = UIAlertController(title: "Entry Submitted", message:"You are now entered into the \(challengeTitle)!", preferredStyle: .alert)
             let OKAction = UIAlertAction(title: "OK", style: .default) { (action: UIAlertAction) in
                 print("You've pressed OK button")
@@ -75,15 +91,15 @@ class JoinChallengeVC: UIViewController, UINavigationControllerDelegate {
             let challengeTitle = self.challengeTitle
             let challengeDescription = self.challengeDescription
             let challengeKey = self.challengeKey
+            let videoURL = self.videoURL
+           
             
             destination.challengeTitle = challengeTitle
             destination.challengeDescription = challengeDescription
             destination.challengeKey = challengeKey
+            destination.videoURL = videoURL
+         
             
-            
-            
-            
-            //destination.viaSegue =
             
             
         }
@@ -95,7 +111,7 @@ class JoinChallengeVC: UIViewController, UINavigationControllerDelegate {
         
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         repAmount.resignFirstResponder()
-        videoLink.resignFirstResponder()
+ 
         return true
     }
 
@@ -107,6 +123,8 @@ class JoinChallengeVC: UIViewController, UINavigationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
         
        
         
@@ -154,6 +172,8 @@ class JoinChallengeVC: UIViewController, UINavigationControllerDelegate {
         }, withCancel: nil)
         
         
+        
+        
     }
     
 
@@ -199,6 +219,7 @@ class JoinChallengeVC: UIViewController, UINavigationControllerDelegate {
         let cameraController = UIImagePickerController()
         cameraController.sourceType = .camera
         cameraController.mediaTypes = [kUTTypeMovie as NSString as String]
+        cameraController.videoMaximumDuration = 60
         cameraController.allowsEditing = false
         cameraController.delegate = delegate
         
@@ -206,30 +227,90 @@ class JoinChallengeVC: UIViewController, UINavigationControllerDelegate {
         return true
     }
     
+        func getName() -> String {
+        let dateFormatter = DateFormatter()
+        let dateFormat = "yyyyMMddHHmmss"
+        dateFormatter.dateFormat = dateFormat
+        let date = dateFormatter.string(from: Date())
+        let name = date.appending(".mp4")
+        return name
+    }
     
-    
-    
-    
-    
-
-}
-
-extension JoinChallengeVC: UIImagePickerControllerDelegate {
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        let mediaType = info[UIImagePickerControllerMediaType] as! NSString
-        dismiss(animated: true, completion: nil)
-        // Handle a movie capture
-        if mediaType == kUTTypeMovie {
-            guard let path = (info[UIImagePickerControllerMediaURL] as! NSURL).path else { return }
-            if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(path) {
-                UISaveVideoAtPathToSavedPhotosAlbum(path, self, #selector(JoinChallengeVC.video(videoPath:didFinishSavingWithError:contextInfo:)), nil)
+    func uploadMovieToFirebaseStorage(url: NSURL) {
+        let currentUser = FIRAuth.auth()!.currentUser!.uid
+        let storageRef = FIRStorage.storage().reference(withPath: "videos/\(currentUser).mov")
+        let uploadMetadata = FIRStorageMetadata()
+        uploadMetadata.contentType = "video/quicktime"
+        let uploadTask = storageRef.putFile(url as URL, metadata: uploadMetadata) { (metadata, error) in
+            if (error != nil) {
+                print("Got an error: \(error)")
+                
+            } else {
+                print ("Upload complete! Here's some metadata: \(metadata)")
+                print ("Your download URL is \(metadata?.downloadURL())")
+               self.videoURL = (metadata!.downloadURL())
+                self.videoLbl.text = String(describing: (metadata!.downloadURL())!)
+            }
+        }
+        uploadTask.observe(.progress) { [weak self] (snapshot) in
+            guard let strongSelf = self else { return }
+            guard let progress = snapshot.progress else { return }
+            strongSelf.progressView.progress = Float(progress.fractionCompleted)
+            print("Uploaded \(progress.completedUnitCount) so far")
                 
             }
         }
     }
 
+
+
+extension JoinChallengeVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        
+        guard let mediaType: String = info[UIImagePickerControllerMediaType] as? String else {
+            return
+        }
+        if mediaType == (kUTTypeMovie as String) {
+            // The user has selected a movie
+            if let movieUrl = info[UIImagePickerControllerMediaURL] as? NSURL {
+                uploadMovieToFirebaseStorage(url: movieUrl)
+                
+        }
+            dismiss(animated: true, completion: nil)
+        
+    }
+    }
+    
+    
+    func handleSelectVideo() {
+        
+        
+        let picker = UIImagePickerController()
+        picker.sourceType = .savedPhotosAlbum
+        picker.mediaTypes = [kUTTypeMovie as NSString as String]
+        picker.videoMaximumDuration = 60
+        picker.delegate = self
+        picker.allowsEditing = true
+        
+        
+        self.present(picker, animated: true , completion: nil)
+        
+        
+        
+        
+    }
+    
+    
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        print("Cancelled Picker")
+        dismiss(animated: true, completion: nil)
+    }
+
 }
+
 
 
 
