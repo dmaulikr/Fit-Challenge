@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5633CE1E1E2D74010044E19A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5633CE1C1E2D74010044E19A /* AVFoundation.framework */; };
+		5633CE1F1E2D74010044E19A /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5633CE1D1E2D74010044E19A /* AVKit.framework */; };
 		5671889F1E09E9A500A41A0B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5671889E1E09E9A500A41A0B /* GoogleService-Info.plist */; };
 		567188A11E09FA3600A41A0B /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567188A01E09FA3600A41A0B /* DataService.swift */; };
 		567188A31E09FF5D00A41A0B /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567188A21E09FF5D00A41A0B /* UserCell.swift */; };
@@ -60,6 +62,8 @@
 		246476E04D2130BFED28426E /* Pods_Fitness_Challenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Fitness_Challenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C3FB95F61D1D547395AF9FD /* Pods-Fitness Challenge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fitness Challenge.release.xcconfig"; path = "Pods/Target Support Files/Pods-Fitness Challenge/Pods-Fitness Challenge.release.xcconfig"; sourceTree = "<group>"; };
 		5617D23BB5A2243B4D717DF4 /* Pods-Fitness Challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fitness Challenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fitness Challenge/Pods-Fitness Challenge.debug.xcconfig"; sourceTree = "<group>"; };
+		5633CE1C1E2D74010044E19A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		5633CE1D1E2D74010044E19A /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		5671889D1E09E24A00A41A0B /* Fitness Challenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Fitness Challenge.entitlements"; sourceTree = "<group>"; };
 		5671889E1E09E9A500A41A0B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		567188A01E09FA3600A41A0B /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5633CE1E1E2D74010044E19A /* AVFoundation.framework in Frameworks */,
+				5633CE1F1E2D74010044E19A /* AVKit.framework in Frameworks */,
 				568D28A81E204D1500F79CA5 /* MobileCoreServices.framework in Frameworks */,
 				D775C80CE35623CC534C4925 /* Pods_Fitness_Challenge.framework in Frameworks */,
 			);
@@ -116,6 +122,8 @@
 		1888B10369E238A3C7CB35ED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5633CE1C1E2D74010044E19A /* AVFoundation.framework */,
+				5633CE1D1E2D74010044E19A /* AVKit.framework */,
 				568D28A71E204D1500F79CA5 /* MobileCoreServices.framework */,
 				246476E04D2130BFED28426E /* Pods_Fitness_Challenge.framework */,
 			);

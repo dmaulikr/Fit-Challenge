@@ -60,7 +60,7 @@ class JoinChallengeVC: UIViewController {
     
     
     @IBAction func submitPressed(_ sender: Any) {
-        if let reps = repAmount.text, (reps.characters.count > 0) {
+        if let reps = repAmount.text, let vid = videoLbl.text ,(reps.characters.count > 0 && vid.characters.count > 0) {
             let currentUser = FIRAuth.auth()!.currentUser!.uid
             DataService.ds.REF_CHALLENGES.child(self.challengeKey).child("joinedChallenger").child(currentUser).setValue(["reps": reps, "videoLink": videoLbl.text!])
             DataService.ds.REF_LEADERBOARDS.child(self.challengeKey).child(currentUser).setValue(["reps": reps,"userName": userNameLbl.text!, "videoLink": videoLbl.text!])
@@ -74,7 +74,7 @@ class JoinChallengeVC: UIViewController {
             
         
             } else {
-            let alertController2 = UIAlertController(title: "ERROR", message:"You must enter a valid video link and rep amount", preferredStyle: .alert)
+            let alertController2 = UIAlertController(title: "ERROR", message:"You must wait for video to load and a rep amount must be entered", preferredStyle: .alert)
             let OKAction2 = UIAlertAction(title: "OK", style: .default) { (action: UIAlertAction) in
                 print("You've pressed OK button");
                 
@@ -238,7 +238,7 @@ class JoinChallengeVC: UIViewController {
     
     func uploadMovieToFirebaseStorage(url: NSURL) {
         let currentUser = FIRAuth.auth()!.currentUser!.uid
-        let storageRef = FIRStorage.storage().reference(withPath: "videos/\(currentUser).mov")
+        let storageRef = FIRStorage.storage().reference(withPath: "videos/\(self.challengeKey)/\(currentUser).mov")
         let uploadMetadata = FIRStorageMetadata()
         uploadMetadata.contentType = "video/quicktime"
         let uploadTask = storageRef.putFile(url as URL, metadata: uploadMetadata) { (metadata, error) in
@@ -291,6 +291,7 @@ extension JoinChallengeVC: UIImagePickerControllerDelegate, UINavigationControll
         picker.sourceType = .savedPhotosAlbum
         picker.mediaTypes = [kUTTypeMovie as NSString as String]
         picker.videoMaximumDuration = 60
+        picker.videoQuality = UIImagePickerControllerQualityType.typeMedium
         picker.delegate = self
         picker.allowsEditing = true
         

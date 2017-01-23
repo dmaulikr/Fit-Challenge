@@ -9,7 +9,9 @@
 import UIKit
 import Firebase
 
+
 class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
+    
 
     var leaders = [Leaderboard]()
     
@@ -19,6 +21,8 @@ class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     var challengeKey = ""
     var videoURL: URL?
     var userName = String()
+    
+   
     
     
     
