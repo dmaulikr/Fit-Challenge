@@ -17,6 +17,11 @@ import SwiftKeychainWrapper
 
 class SignUpVC: UIViewController {
 
+    @IBAction func repBtnPressed(_ sender: Any) {
+        
+        performSegue(withIdentifier: "RepSignUpVC", sender: nil)
+        
+    }
     
     @IBAction func facebookBtnTapped(_ sender: AnyObject) {
         let facebookLogin = FBSDKLoginManager()
@@ -82,7 +87,7 @@ class SignUpVC: UIViewController {
                 if error == nil {
                     print("WHITTEN: Email user authenticated with Frebase")
                     if let user = user {
-                        let userData = ["provider": user.providerID, "isAdmin": false] as [String : Any]
+                        let userData = ["provider": user.providerID] as [String : Any]
                         self.completeSignIn(id: user.uid, userData: userData)
                     }
                 } else {
@@ -92,7 +97,7 @@ class SignUpVC: UIViewController {
                         } else {
                             print("WHITTEN: Successfully authenticated with Firebase")
                             if let user = user {
-                                let userData = ["provider": user.providerID, "isAdmin": false] as [String : Any]
+                                let userData = ["provider": user.providerID] as [String : Any]
                                 self.completeSignIn(id: user.uid, userData: userData)
                             }
                         }

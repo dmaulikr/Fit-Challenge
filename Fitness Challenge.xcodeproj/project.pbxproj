@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5633CE1E1E2D74010044E19A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5633CE1C1E2D74010044E19A /* AVFoundation.framework */; };
 		5633CE1F1E2D74010044E19A /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5633CE1D1E2D74010044E19A /* AVKit.framework */; };
+		5633CE341E359A350044E19A /* RepSignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5633CE331E359A350044E19A /* RepSignUpVC.swift */; };
 		5671889F1E09E9A500A41A0B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5671889E1E09E9A500A41A0B /* GoogleService-Info.plist */; };
 		567188A11E09FA3600A41A0B /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567188A01E09FA3600A41A0B /* DataService.swift */; };
 		567188A31E09FF5D00A41A0B /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567188A21E09FF5D00A41A0B /* UserCell.swift */; };
@@ -64,6 +65,7 @@
 		5617D23BB5A2243B4D717DF4 /* Pods-Fitness Challenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Fitness Challenge.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Fitness Challenge/Pods-Fitness Challenge.debug.xcconfig"; sourceTree = "<group>"; };
 		5633CE1C1E2D74010044E19A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		5633CE1D1E2D74010044E19A /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		5633CE331E359A350044E19A /* RepSignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepSignUpVC.swift; sourceTree = "<group>"; };
 		5671889D1E09E24A00A41A0B /* Fitness Challenge.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Fitness Challenge.entitlements"; sourceTree = "<group>"; };
 		5671889E1E09E9A500A41A0B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		567188A01E09FA3600A41A0B /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				569DE61A1E14CDCF0012A8CF /* CreateChallengesVC.swift */,
 				568AC1BD1E18D24300F605E6 /* JoinChallengeVC.swift */,
 				56B925F71E1C3E32003E340F /* VideoVC.swift */,
+				5633CE331E359A350044E19A /* RepSignUpVC.swift */,
 				56D5AB931E04BC8800C51695 /* View */,
 			);
 			name = Controller;
@@ -392,6 +395,7 @@
 				568AC1CB1E1B853300F605E6 /* CreateProfileVC.swift in Sources */,
 				569DE61D1E14D69F0012A8CF /* ChallengesCell.swift in Sources */,
 				568AC1C71E1B088000F605E6 /* Leaderboard.swift in Sources */,
+				5633CE341E359A350044E19A /* RepSignUpVC.swift in Sources */,
 				568AC1C51E1B050D00F605E6 /* LeaderboardsCell.swift in Sources */,
 				568AC1BE1E18D24300F605E6 /* JoinChallengeVC.swift in Sources */,
 				56EEDE2B1E006FB7005CC896 /* SignUpVC.swift in Sources */,

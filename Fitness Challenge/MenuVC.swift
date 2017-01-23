@@ -19,6 +19,7 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var iconImageArr: Array = [UIImage]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         // Do any additional setup after loading the view.
         menuNameArr = ["Home","Profile","Challenges", "Messages","Create Challenges","Signout"]
@@ -84,17 +85,47 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
         }
         
-        if cell.lblMenu.text! == "Create Challenges" {
-            print("WHITTEN: Create Challenge has been tapped")
-            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let desController = mainStoryboard.instantiateViewController(withIdentifier: "CreateChallengesVC") as! CreateChallengesVC
-            let newFrontViewController = UINavigationController.init(rootViewController: desController)
+        DataService.ds.REF_USERS.child(FIRAuth.auth()!.currentUser!.uid).observeSingleEvent(of: .value, with: { (snapshot) in
             
-            revealViewController.pushFrontViewController(newFrontViewController, animated: true)
+           
+                
+            if cell.lblMenu.text! == "Create Challenges"{
+                 if snapshot.hasChild("isAdmin") && snapshot.exists(){
+                
+                    print("WHITTEN: Create Challenge has been tapped")
+                    
+                    let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    let desController = mainStoryboard.instantiateViewController(withIdentifier: "CreateChallengesVC") as! CreateChallengesVC
+                    let newFrontViewController = UINavigationController.init(rootViewController: desController)
+                    
+                    revealViewController.pushFrontViewController(newFrontViewController, animated: true)
+
+                
+                
+                
+            } else {
+                print("User is not an Admin")
+                let alertController = UIAlertController(title: "SORRY", message: "You must be a Rep to create challenges!", preferredStyle: .alert)
+                let defaultAction = UIAlertAction(title: "Close Alert", style: .default, handler: nil)
+                alertController.addAction(defaultAction)
+                
+                self.present(alertController, animated: true, completion: nil)
+                
+            }
+            }
             
-        }
+        }, withCancel: nil)
+        
+        
+    
+    
         
     }
+    
+   
+
+        
+    
     
     
     
