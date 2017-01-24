@@ -61,9 +61,15 @@ class JoinChallengeVC: UIViewController {
     
     @IBAction func submitPressed(_ sender: Any) {
         if let reps = repAmount.text, let vid = videoLbl.text ,(reps.characters.count > 0 && vid.characters.count > 0) {
+            
             let currentUser = FIRAuth.auth()!.currentUser!.uid
-            DataService.ds.REF_CHALLENGES.child(self.challengeKey).child("joinedChallenger").child(currentUser).setValue(["reps": reps, "videoLink": videoLbl.text!])
-            DataService.ds.REF_LEADERBOARDS.child(self.challengeKey).child(currentUser).setValue(["reps": reps,"userName": userNameLbl.text!, "videoLink": videoLbl.text!])
+            //Looking at the users profile for gender
+            DataService.ds.REF_USER_CURRENT.child("profile").child("gender").observeSingleEvent(of: .value, with: { (snaps) in
+                let gender = snaps.value as? String
+            
+            DataService.ds.REF_CHALLENGES.child(self.challengeKey).child("joinedChallenger").child(currentUser).setValue(["reps": reps, "videoLink": self.videoLbl.text!, "gender": gender ])
+            DataService.ds.REF_LEADERBOARDS.child(self.challengeKey).child(currentUser).setValue(["reps": reps,"userName": self.userNameLbl.text!, "videoLink": self.videoLbl.text!, "gender": gender])
+                })
             let alertController = UIAlertController(title: "Entry Submitted", message:"You are now entered into the \(challengeTitle)!", preferredStyle: .alert)
             let OKAction = UIAlertAction(title: "OK", style: .default) { (action: UIAlertAction) in
                 print("You've pressed OK button")

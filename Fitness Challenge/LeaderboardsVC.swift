@@ -13,7 +13,8 @@ import Firebase
 class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
 
-    var leaders = [Leaderboard]()
+    var maleLeaders = [Leaderboard]()
+    var femaleLeaders = [Leaderboard]()
     
     
     var challengeTitle = ""
@@ -23,6 +24,8 @@ class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     var userName = String()
     
    
+   
+    @IBOutlet weak var mySegment: UISegmentedControl!
     
     
     
@@ -38,10 +41,12 @@ class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         leaderTV.dataSource = self
         
         //let currentUser = FIRAuth.auth()!.currentUser!.uid
+        
         let query = DataService.ds.REF_LEADERBOARDS.child(self.challengeKey).queryOrdered(byChild: "reps").queryLimited(toLast: 10)
         query.observe(.value, with: { (snapshot) in
             
-            self.leaders = []
+            self.maleLeaders = []
+            self.femaleLeaders = []
             
            // print("WHITTEN: \(snapshot)")
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot]{
@@ -49,14 +54,26 @@ class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                     print("SNAP: \(snap)")
                     if let leaderDict = snap.value as? Dictionary<String, AnyObject> {
                         let key = snap.key
+                        let gender = snap.childSnapshot(forPath: "gender")
+                        print("WHITTEN GENDER: \(gender)")
+                        if gender.value as? String == "Male" {
                         //print("This is the key\(key)")
+                            print("YO WHITTEN: THIS PERSON IS A MALE!!")
+                        
                         let leader = Leaderboard(userKey: key, leaderData: leaderDict)
                         
-                        self.leaders.append(leader)
+                        self.maleLeaders.append(leader)
+                        } else {
+                            print("YO WHITTEN: THIS IS A FEMALE!")
+                            let leader2 = Leaderboard(userKey: key, leaderData: leaderDict)
+                            self.femaleLeaders.append(leader2)
+                        }
+                        
                     }
                 }
             }
-            self.leaders.reverse()
+            self.femaleLeaders.reverse()
+            self.maleLeaders.reverse()
             self.leaderTV.reloadData()
         })
       
@@ -77,25 +94,71 @@ class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return leaders.count
+        
+        var returnValue = 0
+        
+        switch (mySegment.selectedSegmentIndex) {
+        case 0:
+            returnValue = maleLeaders.count
+            break
+        case 1:
+            returnValue = femaleLeaders.count
+            break
+            
+        default:
+            break
+            
+        }
+        return returnValue
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let leader = leaders[indexPath.row]
-        performSegue(withIdentifier: "VideoVC", sender: leader)
+        
+        
+        switch (mySegment.selectedSegmentIndex) {
+        case 0:
+            let leader = maleLeaders[indexPath.row]
+            performSegue(withIdentifier: "VideoVC", sender: leader)
+            break
+        case 1:
+            let leader2 = femaleLeaders[indexPath.row]
+            performSegue(withIdentifier: "VideoVC", sender: leader2)
+            break
+            
+        default:
+            break
+            
+        }
+
+        
+        
+        
+        //performSegue(withIdentifier: "VideoVC", sender: leader)
         print("You selected row #\(indexPath.row)!")
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let leader = leaders[indexPath.row]
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "LeaderboardsCell") as? LeaderboardsCell {
-            cell.configureCell(leader: leader)
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LeaderboardsCell") as? LeaderboardsCell
+            //cell.configureCell(leader: leader)
+        
+        switch (mySegment.selectedSegmentIndex) {
+        case 0:
+            let leader = maleLeaders[indexPath.row]
+            cell!.configureCell(leader: leader)
+            break
+        case 1:
+            let leader2 = femaleLeaders[indexPath.row]
+            cell!.configureCell(leader: leader2)
+            break
             
-            return cell
-        } else {
-            return LeaderboardsCell()
+        default:
+            break
+            
         }
+
+           return cell!
         
     }
     
@@ -107,6 +170,13 @@ class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
             
         }
+    }
+    
+    
+    @IBAction func segmentControlChanged(_ sender: Any) {
+        
+        leaderTV.reloadData()
+        
     }
     
     

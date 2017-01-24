@@ -129,7 +129,7 @@ class ProfileVC: UIViewController{
     */
     
     func parseForProfile() {
-        DataService.ds.REF_USERS.child(FIRAuth.auth()!.currentUser!.uid).child("profile").observeSingleEvent(of: .value, with: { (snapshot) in
+        DataService.ds.REF_USERS.child((FIRAuth.auth()?.currentUser?.uid)!).child("profile").observeSingleEvent(of: .value, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String: AnyObject] {
                 self.usernameLbl.text = dictionary["userName"] as? String

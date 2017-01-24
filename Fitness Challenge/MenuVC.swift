@@ -85,12 +85,12 @@ class MenuVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
         }
         
-        DataService.ds.REF_USERS.child(FIRAuth.auth()!.currentUser!.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+        DataService.ds.REF_USERS.child((FIRAuth.auth()?.currentUser?.uid)!).observeSingleEvent(of: .value, with: { (snapshot) in
             
            
                 
             if cell.lblMenu.text! == "Create Challenges"{
-                 if snapshot.hasChild("isAdmin") && snapshot.exists(){
+                 if snapshot.hasChild("isAdmin"){
                 
                     print("WHITTEN: Create Challenge has been tapped")
                     

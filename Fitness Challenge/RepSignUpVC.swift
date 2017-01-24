@@ -16,6 +16,10 @@ class RepSignUpVC: UIViewController {
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var companyTF: UITextField!
     
+    @IBAction func backToSignUpVC(_ sender: Any) {
+        
+        performSegue(withIdentifier: "backToSignUpVC", sender: nil)
+    }
     
     @IBAction func signInBtnPressed(_ sender: Any) {
         
@@ -67,7 +71,7 @@ class RepSignUpVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
             print("WHITTEN: ID Found in KeyChain")
-            performSegue(withIdentifier: "goToProfile", sender: nil)
+           performSegue(withIdentifier: "repGoToProfile", sender: nil)
         }
     }
 

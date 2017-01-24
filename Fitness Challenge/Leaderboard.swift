@@ -14,9 +14,14 @@ class Leaderboard {
     private var _challengeKey: String!
     private var _userName: String!
     private var _videoLink: String!
+    private var _gender: String!
     
     var reps: String {
         return _reps
+    }
+    
+    var gender: String {
+        return _gender
     }
     
     var videoLink: String {
@@ -55,6 +60,10 @@ class Leaderboard {
         }
         if let videoLink = leaderData["videoLink"] as? String {
             self._videoLink = videoLink
+        }
+        
+        if let gender = leaderData["gender"] as? String {
+            self._gender = gender
         }
         
     }

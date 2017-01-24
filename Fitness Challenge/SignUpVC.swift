@@ -85,7 +85,7 @@ class SignUpVC: UIViewController {
            
             FIRAuth.auth()?.signIn(withEmail: email, password: pass, completion: { (user, error) in
                 if error == nil {
-                    print("WHITTEN: Email user authenticated with Frebase")
+                    print("WHITTEN: Email user authenticated with Firebase")
                     if let user = user {
                         let userData = ["provider": user.providerID] as [String : Any]
                         self.completeSignIn(id: user.uid, userData: userData)
