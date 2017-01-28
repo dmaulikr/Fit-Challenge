@@ -68,7 +68,7 @@ class HomeViewController: UIViewController,UITableViewDelegate, UITableViewDataS
         let challenge = challenges[indexPath.row]
         let theTitle = challenge.title
         print(theTitle)
-        self.performSegue(withIdentifier: "goToChallenge", sender: self)
+        self.performSegue(withIdentifier: "goToChallenge", sender: nil)
         
     }
     

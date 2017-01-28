@@ -61,7 +61,7 @@ class CreateChallengesVC: UIViewController, UITextFieldDelegate, UITextViewDeleg
     
     func completeChallenge(id: String, challengeData: Dictionary<String, String>) {
         DataService.ds.createChallenge(challengeID: id, challengeData: challengeData)
-        performSegue(withIdentifier: "goToHome", sender: nil)
+        performSegue(withIdentifier: "goToHome", sender: self)
     }
 
     
