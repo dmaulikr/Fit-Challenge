@@ -51,13 +51,13 @@ class SignUpVC: UIViewController {
         
         
     }
-    override func viewDidAppear(_ animated: Bool) {
+   /* override func viewDidAppear(_ animated: Bool) {
         if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
             print("WHITTEN: ID Found in KeyChain")
             performSegue(withIdentifier: "goToProfile", sender: nil)
         }
     }
-    
+    */
     func firebaseAuth(_ credential: FIRAuthCredential) {
         FIRAuth.auth()?.signIn(with: credential, completion: { (user, error) in
             if error != nil {

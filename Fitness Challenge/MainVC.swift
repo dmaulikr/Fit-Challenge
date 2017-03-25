@@ -14,10 +14,7 @@ class MainVC: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        revealViewController().rearViewRevealWidth = 200
-        menuButton.target = revealViewController()
-        menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+        
         
     }
 

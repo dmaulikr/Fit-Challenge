@@ -36,13 +36,7 @@ class CreateChallengesVC: UIViewController, UITextFieldDelegate, UITextViewDeleg
       
         descriptionTextView.delegate = self
         
-        revealViewController().rearViewRevealWidth = 200
-        homeButton2.target = revealViewController()
-        homeButton2.action = #selector(SWRevealViewController.revealToggle(_:))
-
-        
-        
-    }
+         }
     
     func dismissKeyboard() {
     view.endEditing(true)

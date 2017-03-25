@@ -75,11 +75,9 @@ class ProfileVC: UIViewController{
         parseForProfile()
         
         //Sets the menuButton
-        if revealViewController() != nil {
-        menuButton.target = revealViewController()
-        menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+        
         //Chaning Nav Bar Features
-        }
+        
         
        
         

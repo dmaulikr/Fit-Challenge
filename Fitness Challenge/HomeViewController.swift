@@ -47,11 +47,7 @@ class HomeViewController: UIViewController,UITableViewDelegate, UITableViewDataS
             self.tableView.reloadData()
         })
         
-        // Do any additional setup after loading the view.
-        revealViewController().rearViewRevealWidth = 200
-        homeButton.target = revealViewController()
-        homeButton.action = #selector(SWRevealViewController.revealToggle(_:))
-        
+                
         
     }
     

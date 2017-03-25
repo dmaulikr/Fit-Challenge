@@ -37,12 +37,8 @@
 		56EEDE231DFFCC89005CC896 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56EEDE211DFFCC89005CC896 /* LaunchScreen.storyboard */; };
 		56EEDE2B1E006FB7005CC896 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56EEDE2A1E006FB7005CC896 /* SignUpVC.swift */; };
 		56F951AA1E0B7D6500FB9E1C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F951A91E0B7D6500FB9E1C /* User.swift */; };
-		56F951AC1E0B98DF00FB9E1C /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F951AB1E0B98DF00FB9E1C /* CameraViewController.swift */; };
 		56F951AE1E0B98FC00FB9E1C /* PhotoCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F951AD1E0B98FC00FB9E1C /* PhotoCaptureDelegate.swift */; };
 		56F951B01E0B9ABA00FB9E1C /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F951AF1E0B9ABA00FB9E1C /* PreviewView.swift */; };
-		56FC15DA1E1366DC0037E219 /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC15D91E1366DC0037E219 /* MenuVC.swift */; };
-		56FC15DC1E13670F0037E219 /* MenuTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56FC15DB1E13670F0037E219 /* MenuTVC.swift */; };
-		56FC15EA1E1392C00037E219 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FC15E91E1392C00037E219 /* SWRevealViewController.m */; };
 		D775C80CE35623CC534C4925 /* Pods_Fitness_Challenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 246476E04D2130BFED28426E /* Pods_Fitness_Challenge.framework */; };
 /* End PBXBuildFile section */
 
@@ -96,14 +92,8 @@
 		56EEDE241DFFCC89005CC896 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		56EEDE2A1E006FB7005CC896 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		56F951A91E0B7D6500FB9E1C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		56F951AB1E0B98DF00FB9E1C /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		56F951AD1E0B98FC00FB9E1C /* PhotoCaptureDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDelegate.swift; sourceTree = "<group>"; };
 		56F951AF1E0B9ABA00FB9E1C /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
-		56FC15D91E1366DC0037E219 /* MenuVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
-		56FC15DB1E13670F0037E219 /* MenuTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTVC.swift; sourceTree = "<group>"; };
-		56FC15E81E1392C00037E219 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
-		56FC15E91E1392C00037E219 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
-		56FC15EB1E1392F60037E219 /* Fitness Challenge-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Fitness Challenge-Bridging-Header.h"; path = "Fitness Challenge/Fitness Challenge-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,15 +131,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		5637EC441E13085400959B7F /* SWRevealViewController */ = {
-			isa = PBXGroup;
-			children = (
-				56FC15E81E1392C00037E219 /* SWRevealViewController.h */,
-				56FC15E91E1392C00037E219 /* SWRevealViewController.m */,
-			);
-			name = SWRevealViewController;
-			sourceTree = "<group>";
-		};
 		56BA1EAE1E14804600D6E5A0 /* Util */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,7 +144,6 @@
 			children = (
 				567188A21E09FF5D00A41A0B /* UserCell.swift */,
 				5684D8281E12DC9700F0A34C /* ButtonRounding.swift */,
-				56FC15DB1E13670F0037E219 /* MenuTVC.swift */,
 				569DE61C1E14D69F0012A8CF /* ChallengesCell.swift */,
 				568AC1C41E1B050D00F605E6 /* LeaderboardsCell.swift */,
 			);
@@ -188,14 +168,12 @@
 			children = (
 				568AC1CA1E1B853300F605E6 /* CreateProfileVC.swift */,
 				568AC1C81E1B16C300F605E6 /* LeaderboardsVC.swift */,
-				56F951AB1E0B98DF00FB9E1C /* CameraViewController.swift */,
 				568AC1BB1E1613E800F605E6 /* DescriptionVC.swift */,
 				56EA6A291E00C05E00E9FE5D /* ProfileVC.swift */,
 				56EEDE2A1E006FB7005CC896 /* SignUpVC.swift */,
 				56D5AB911E01BE8F00C51695 /* MainVC.swift */,
 				567188A61E0B586600A41A0B /* UsersVC.swift */,
 				568AC1B91E15C35000F605E6 /* HomeViewController.swift */,
-				56FC15D91E1366DC0037E219 /* MenuVC.swift */,
 				569DE61A1E14CDCF0012A8CF /* CreateChallengesVC.swift */,
 				568AC1BD1E18D24300F605E6 /* JoinChallengeVC.swift */,
 				56B925F71E1C3E32003E340F /* VideoVC.swift */,
@@ -209,8 +187,6 @@
 			isa = PBXGroup;
 			children = (
 				56BA1EAE1E14804600D6E5A0 /* Util */,
-				56FC15EB1E1392F60037E219 /* Fitness Challenge-Bridging-Header.h */,
-				5637EC441E13085400959B7F /* SWRevealViewController */,
 				56EEDE171DFFCC89005CC896 /* Fitness Challenge */,
 				56EEDE161DFFCC89005CC896 /* Products */,
 				1D99178CD6B2B433C92090F9 /* Pods */,
@@ -390,7 +366,6 @@
 				56B925F81E1C3E32003E340F /* VideoVC.swift in Sources */,
 				56D5AB921E01BE8F00C51695 /* MainVC.swift in Sources */,
 				568AC1BA1E15C35000F605E6 /* HomeViewController.swift in Sources */,
-				56FC15DA1E1366DC0037E219 /* MenuVC.swift in Sources */,
 				5684D8291E12DC9700F0A34C /* ButtonRounding.swift in Sources */,
 				568AC1CB1E1B853300F605E6 /* CreateProfileVC.swift in Sources */,
 				569DE61D1E14D69F0012A8CF /* ChallengesCell.swift in Sources */,
@@ -400,15 +375,12 @@
 				568AC1BE1E18D24300F605E6 /* JoinChallengeVC.swift in Sources */,
 				56EEDE2B1E006FB7005CC896 /* SignUpVC.swift in Sources */,
 				569DE61B1E14CDCF0012A8CF /* CreateChallengesVC.swift in Sources */,
-				56FC15DC1E13670F0037E219 /* MenuTVC.swift in Sources */,
 				56F951B01E0B9ABA00FB9E1C /* PreviewView.swift in Sources */,
-				56FC15EA1E1392C00037E219 /* SWRevealViewController.m in Sources */,
 				568AC1C91E1B16C300F605E6 /* LeaderboardsVC.swift in Sources */,
 				569DE61F1E14E8EA0012A8CF /* Challenge.swift in Sources */,
 				56EA6A2A1E00C05E00E9FE5D /* ProfileVC.swift in Sources */,
 				56EEDE191DFFCC89005CC896 /* AppDelegate.swift in Sources */,
 				567188A31E09FF5D00A41A0B /* UserCell.swift in Sources */,
-				56F951AC1E0B98DF00FB9E1C /* CameraViewController.swift in Sources */,
 				567188A11E09FA3600A41A0B /* DataService.swift in Sources */,
 				56B925F61E1B956B003E340F /* Profile.swift in Sources */,
 				567188A71E0B586600A41A0B /* UsersVC.swift in Sources */,
@@ -546,7 +518,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Renegade.Fitness-Challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Fitness Challenge-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -569,7 +540,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Renegade.Fitness-Challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Fitness Challenge-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
